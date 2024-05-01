@@ -165,3 +165,5 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1eutv")
+
+[connection signal="player_attacking" from="." to="." method="_on_player_attacking"]
