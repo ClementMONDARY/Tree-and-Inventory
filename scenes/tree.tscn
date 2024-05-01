@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7slmmf6hcf6x"]
+
+[ext_resource type="Texture2D" uid="uid://g6qhpleht7ib" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Resources/Trees/Tree.png" id="1_f8r7q"]
+[ext_resource type="Script" path="res://scripts/tree.gd" id="1_i5mry"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33tft"]
+atlas = ExtResource("1_f8r7q")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rmp0"]
+atlas = ExtResource("1_f8r7q")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7npi"]
+atlas = ExtResource("1_f8r7q")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o36kv"]
+atlas = ExtResource("1_f8r7q")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7opq"]
+atlas = ExtResource("1_f8r7q")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hye3g"]
+atlas = ExtResource("1_f8r7q")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_julqp"]
+atlas = ExtResource("1_f8r7q")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jidfe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33tft")
+}],
+"loop": true,
+"name": &"choped",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rmp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7npi")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o36kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7opq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hye3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_julqp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eo5nl"]
+radius = 12.0
+height = 36.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ffm7x"]
+radius = 46.0
+height = 118.0
+
+[node name="tree" type="StaticBody2D"]
+script = ExtResource("1_i5mry")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -70)
+sprite_frames = SubResource("SpriteFrames_jidfe")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_eo5nl")
+
+[node name="chopArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chopArea"]
+position = Vector2(1, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ffm7x")
+
+[connection signal="body_entered" from="chopArea" to="." method="_on_chop_area_body_entered"]
+[connection signal="body_exited" from="chopArea" to="." method="_on_chop_area_body_exited"]
