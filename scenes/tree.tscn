@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7slmmf6hcf6x"]
+[gd_scene load_steps=16 format=3 uid="uid://b7slmmf6hcf6x"]
 
 [ext_resource type="Texture2D" uid="uid://g6qhpleht7ib" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Resources/Trees/Tree.png" id="1_f8r7q"]
 [ext_resource type="Script" path="res://scripts/tree.gd" id="1_i5mry"]
@@ -7,13 +7,25 @@
 atlas = ExtResource("1_f8r7q")
 region = Rect2(0, 384, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rmp0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiicm"]
+atlas = ExtResource("1_f8r7q")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruhyp"]
 atlas = ExtResource("1_f8r7q")
 region = Rect2(0, 192, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o7npi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_itdc6"]
+atlas = ExtResource("1_f8r7q")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeo2t"]
 atlas = ExtResource("1_f8r7q")
 region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6wjn"]
+atlas = ExtResource("1_f8r7q")
+region = Rect2(576, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o36kv"]
 atlas = ExtResource("1_f8r7q")
@@ -43,14 +55,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6rmp0")
+"texture": SubResource("AtlasTexture_tiicm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o7npi")
+"texture": SubResource("AtlasTexture_ruhyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itdc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eeo2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6wjn")
 }],
 "loop": false,
 "name": &"hit",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -84,8 +105,10 @@ script = ExtResource("1_i5mry")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_jidfe")
-animation = &"idle"
+animation = &"hit"
 autoplay = "idle"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
@@ -99,5 +122,10 @@ position = Vector2(1, -1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ffm7x")
 
+[node name="growth_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="chopArea" to="." method="_on_chop_area_body_entered"]
 [connection signal="body_exited" from="chopArea" to="." method="_on_chop_area_body_exited"]
+[connection signal="timeout" from="growth_timer" to="." method="_on_growth_timer_timeout"]
