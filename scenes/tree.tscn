@@ -126,6 +126,9 @@ shape = SubResource("CapsuleShape2D_ffm7x")
 wait_time = 3.0
 one_shot = true
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(86, -68)
+
 [connection signal="body_entered" from="chopArea" to="." method="_on_chop_area_body_entered"]
 [connection signal="body_exited" from="chopArea" to="." method="_on_chop_area_body_exited"]
 [connection signal="timeout" from="growth_timer" to="." method="_on_growth_timer_timeout"]

@@ -1,0 +1,120 @@
+[gd_scene load_steps=16 format=3 uid="uid://cml1bbbkgy4q3"]
+
+[ext_resource type="Texture2D" uid="uid://hen4cjovuro7" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Resources/Resources/W_Idle_(NoShadow).png" id="1_3bgi4"]
+[ext_resource type="Script" path="res://scripts/wood_collectible.gd" id="1_76eot"]
+[ext_resource type="Texture2D" uid="uid://dhm652fdcum20" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Resources/Resources/W_Spawn.png" id="2_mvab5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5c10w"]
+radius = 35.1283
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5s1i"]
+atlas = ExtResource("1_3bgi4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjbkk"]
+atlas = ExtResource("2_mvab5")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3il8x"]
+atlas = ExtResource("2_mvab5")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keajm"]
+atlas = ExtResource("2_mvab5")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mmm7"]
+atlas = ExtResource("2_mvab5")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvbke"]
+atlas = ExtResource("2_mvab5")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fsgy"]
+atlas = ExtResource("2_mvab5")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f7i1"]
+atlas = ExtResource("2_mvab5")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tas35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5s1i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjbkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3il8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keajm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mmm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvbke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fsgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f7i1")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_6i4uv"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 0.466517),
+"update": 0,
+"values": [Vector2(0, -24.392), Vector2(0, -21.892), Vector2(0, -19.392), Vector2(0, -21.892), Vector2(0, -24.392)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8pe7t"]
+_data = {
+"idle": SubResource("Animation_6i4uv")
+}
+
+[node name="wood_collectible" type="StaticBody2D"]
+script = ExtResource("1_76eot")
+
+[node name="pickArea" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickArea"]
+shape = SubResource("CircleShape2D_5c10w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -21.3842)
+sprite_frames = SubResource("SpriteFrames_tas35")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8pe7t")
+}
+
+[connection signal="body_entered" from="pickArea" to="." method="_on_pick_area_body_entered"]
