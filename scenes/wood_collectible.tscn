@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dhm652fdcum20" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Resources/Resources/W_Spawn.png" id="2_mvab5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5c10w"]
-radius = 35.1283
+radius = 28.0179
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o5s1i"]
 atlas = ExtResource("1_3bgi4")
