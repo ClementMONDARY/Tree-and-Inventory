@@ -24,11 +24,15 @@ func _on_player_player_attacking():
 				await get_tree().create_timer(0.5).timeout
 				$AnimatedSprite2D.play("idle")
 
-func _on_growth_timer_timeout():
-	tree_health = 3
-	$AnimatedSprite2D.play("idle")
-
 func drop_wood():
 	var wood_instance = wood.instantiate()
 	wood_instance.global_position = $Marker2D.global_position
 	get_parent().add_child(wood_instance)
+	wood_instance.connect("wood_picked", _on_wood_picked)
+
+func _on_wood_picked():
+	$growth_timer.start()
+
+func _on_growth_timer_timeout():
+	tree_health = 3
+	$AnimatedSprite2D.play("idle")
