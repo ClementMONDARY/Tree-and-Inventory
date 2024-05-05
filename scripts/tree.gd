@@ -13,16 +13,18 @@ func _on_chop_area_body_exited(body):
 		is_area_entered = false
 
 func _on_player_player_attacking():
-	if is_area_entered:
-		if tree_health > 0:
-			tree_health -= 1
-			if tree_health == 0:
-				$AnimatedSprite2D.play("choped")
-				drop_wood()
-			else:
-				$AnimatedSprite2D.play("hit")
-				await get_tree().create_timer(0.5).timeout
-				$AnimatedSprite2D.play("idle")
+	if is_area_entered and tree_health > 0:
+		tree_health -= 1
+		if tree_health == 0:
+			$CPUParticles2D.emitting = true
+			$AnimatedSprite2D.play("choped")
+			drop_wood()
+		else:
+			$AnimatedSprite2D.play("hit")
+			$AnimationPlayer.play("hit_effect")
+			$CPUParticles2D.emitting = true
+			await get_tree().create_timer(0.5).timeout
+			$AnimatedSprite2D.play("idle")
 
 func drop_wood():
 	var wood_instance = wood.instantiate()
@@ -31,6 +33,7 @@ func drop_wood():
 	wood_instance.connect("wood_picked", _on_wood_picked)
 
 func _on_wood_picked():
+	print("growth_timer started")
 	$growth_timer.start()
 
 func _on_growth_timer_timeout():

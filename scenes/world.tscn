@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dddlnbxr63qnh"]
+[gd_scene load_steps=12 format=3 uid="uid://dddlnbxr63qnh"]
 
 [ext_resource type="Texture2D" uid="uid://bbxq5ufvsfai5" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_m1dds"]
 [ext_resource type="Texture2D" uid="uid://bt0shw4jjrce7" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Elevation.png" id="2_lxurc"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://db3c1p14scgh5" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Terrain/Water/Foam/Foam.png" id="4_6xnyb"]
 [ext_resource type="PackedScene" uid="uid://bgpvsx1kko1ye" path="res://scenes/player.tscn" id="5_t5ooy"]
 [ext_resource type="PackedScene" uid="uid://b7slmmf6hcf6x" path="res://scenes/tree.tscn" id="6_yv3ni"]
-[ext_resource type="PackedScene" uid="uid://cml1bbbkgy4q3" path="res://scenes/wood_collectible.tscn" id="7_8dqoe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wend"]
 texture = ExtResource("1_m1dds")
@@ -234,14 +233,19 @@ layer_5/name = "bridge"
 layer_5/z_index = 3
 layer_5/tile_data = PackedInt32Array(327686, 131076, 0, 327683, 4, 0, 327684, 65540, 0, 327685, 65540, 0, 393220, 131076, 3, 393221, 131076, 3)
 
-[node name="player" parent="." instance=ExtResource("5_t5ooy")]
+[node name="game_nodes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="player" parent="game_nodes" instance=ExtResource("5_t5ooy")]
 position = Vector2(345, 516)
 
-[node name="tree" parent="." instance=ExtResource("6_yv3ni")]
+[node name="tree" parent="game_nodes" instance=ExtResource("6_yv3ni")]
+z_index = 3
 position = Vector2(297, 615)
 
-[node name="wood_collectible" parent="." instance=ExtResource("7_8dqoe")]
-position = Vector2(-192, -85)
+[node name="tree2" parent="game_nodes" instance=ExtResource("6_yv3ni")]
+z_index = 3
+position = Vector2(432, 557)
 
-[connection signal="player_attacking" from="player" to="tree" method="_on_player_player_attacking"]
-[connection signal="wood_picked" from="wood_collectible" to="tree" method="_on_wood_collectible_wood_picked"]
+[connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree" method="_on_player_player_attacking"]
+[connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree2" method="_on_player_player_attacking"]
