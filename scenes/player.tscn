@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://bgpvsx1kko1ye"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6ilnb"]
-[ext_resource type="Texture2D" uid="uid://1reuefnljorq" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_a8de7"]
+[ext_resource type="Texture2D" uid="uid://1reuefnljorq" path="res://graphics/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_a8de7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbor8"]
 atlas = ExtResource("2_a8de7")

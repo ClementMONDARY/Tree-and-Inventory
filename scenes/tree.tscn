@@ -1,8 +1,8 @@
 [gd_scene load_steps=20 format=3 uid="uid://b7slmmf6hcf6x"]
 
-[ext_resource type="Texture2D" uid="uid://g6qhpleht7ib" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Resources/Trees/Tree.png" id="1_f8r7q"]
+[ext_resource type="Texture2D" uid="uid://g6qhpleht7ib" path="res://graphics/Tiny Swords/Resources/Trees/Tree.png" id="1_f8r7q"]
 [ext_resource type="Script" path="res://scripts/tree.gd" id="1_i5mry"]
-[ext_resource type="Texture2D" uid="uid://be0vt1bakj3co" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Resources/Trees/New Piskel-1.png.png" id="2_b2hky"]
+[ext_resource type="Texture2D" uid="uid://be0vt1bakj3co" path="res://graphics/Tiny Swords/Resources/Trees/New Piskel-1.png.png" id="2_b2hky"]
 
 [sub_resource type="Curve" id="Curve_row7o"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.634831, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

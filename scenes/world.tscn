@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://dddlnbxr63qnh"]
 
-[ext_resource type="Texture2D" uid="uid://bbxq5ufvsfai5" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_m1dds"]
-[ext_resource type="Texture2D" uid="uid://bt0shw4jjrce7" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Elevation.png" id="2_lxurc"]
-[ext_resource type="Texture2D" uid="uid://cdjkjv1kf1se2" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Terrain/Bridge/Bridge_All.png" id="3_exjib"]
-[ext_resource type="Texture2D" uid="uid://db3c1p14scgh5" path="res://graphics/Tiny Swords/Tiny Swords (Update 010)/Terrain/Water/Foam/Foam.png" id="4_6xnyb"]
+[ext_resource type="Texture2D" uid="uid://bbxq5ufvsfai5" path="res://graphics/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="1_m1dds"]
+[ext_resource type="Texture2D" uid="uid://bt0shw4jjrce7" path="res://graphics/Tiny Swords/Terrain/Ground/Tilemap_Elevation.png" id="2_lxurc"]
+[ext_resource type="Texture2D" uid="uid://cdjkjv1kf1se2" path="res://graphics/Tiny Swords/Terrain/Bridge/Bridge_All.png" id="3_exjib"]
+[ext_resource type="Texture2D" uid="uid://db3c1p14scgh5" path="res://graphics/Tiny Swords/Terrain/Water/Foam/Foam.png" id="4_6xnyb"]
 [ext_resource type="PackedScene" uid="uid://bgpvsx1kko1ye" path="res://scenes/player.tscn" id="5_t5ooy"]
 [ext_resource type="PackedScene" uid="uid://b7slmmf6hcf6x" path="res://scenes/tree.tscn" id="6_yv3ni"]
 

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 120
+const SLIDE_FACTOR = 0.75
 var player_state = "idle"
 var player_is_attacking = false
 signal player_attacking
@@ -15,7 +16,11 @@ func _physics_process(delta):
 	if Input.is_action_pressed("attack") && !player_is_attacking:
 		attack()
 	else:
-		velocity = direction * SPEED
+		if direction.x == 0 && direction.y == 0:
+			velocity *= SLIDE_FACTOR
+		else:
+			velocity = direction * SPEED
+		
 		if !player_is_attacking:
 			play_animation(direction, player_state)
 			move_and_slide()
