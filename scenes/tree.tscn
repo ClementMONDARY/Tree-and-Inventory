@@ -129,14 +129,13 @@ _data = {
 script = ExtResource("1_i5mry")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(0, -84)
 emitting = false
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("2_b2hky")
 emission_shape = 5
-emission_points = PackedVector2Array(0, -38.275, 0, 4.19, 0, 56.38)
+emission_points = PackedVector2Array(0, -122.275, 0, -79.81, 0, -27.62)
 emission_normals = PackedVector2Array()
 emission_colors = PackedColorArray()
 spread = 180.0
