@@ -4,6 +4,9 @@ var tree_health = 3
 var is_area_entered = false
 var wood = preload("res://scenes/wood_collectible.tscn")
 
+func _ready():
+	$AnimatedSprite2D.frame = randi_range(0, $AnimatedSprite2D.sprite_frames.get_frame_count("idle") - 1)
+
 func _on_chop_area_body_entered(body):
 	if body.name == "player":
 		is_area_entered = true
