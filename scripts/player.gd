@@ -9,15 +9,16 @@ func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	if direction.x == 0 && direction.y == 0:
 		player_state = "idle"
-		if Input.is_action_pressed("attack") && !player_is_attacking:
-			attack()
 	else:
 		player_state = "walking"
 	
-	velocity = direction * SPEED
-	if !player_is_attacking:
-		play_animation(direction, player_state)
-		move_and_slide()
+	if Input.is_action_pressed("attack") && !player_is_attacking:
+		attack()
+	else:
+		velocity = direction * SPEED
+		if !player_is_attacking:
+			play_animation(direction, player_state)
+			move_and_slide()
 
 func attack():
 	player_is_attacking = true
