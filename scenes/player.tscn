@@ -165,3 +165,5 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1eutv")
+
+[node name="Audio" type="Node" parent="."]

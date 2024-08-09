@@ -20,12 +20,14 @@ func _on_player_player_attacking():
 		tree_health -= 1
 		if tree_health == 0:
 			$CPUParticles2D.emitting = true
+			$Audio/HitSoundEffect.playing = true
 			$AnimatedSprite2D.play("choped")
 			drop_wood()
 		else:
 			$AnimatedSprite2D.play("hit")
 			$AnimationPlayer.play("hit_effect")
 			$CPUParticles2D.emitting = true
+			$Audio/HitSoundEffect.playing = true
 			await get_tree().create_timer(0.5).timeout
 			$AnimatedSprite2D.play("idle")
 
