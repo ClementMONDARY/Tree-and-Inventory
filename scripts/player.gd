@@ -4,26 +4,31 @@ const SPEED = 120
 const SLIDE_FACTOR = 0.75
 var player_state = "idle"
 var player_is_attacking = false
+var player_can_move = false
 signal player_attacking
 
+func _on_main_menu_game_started():
+	player_can_move = true
+
 func _physics_process(delta):
-	var direction = Input.get_vector("left", "right", "up", "down")
-	if direction.x == 0 && direction.y == 0:
-		player_state = "idle"
-	else:
-		player_state = "walking"
-	
-	if Input.is_action_pressed("attack") && !player_is_attacking:
-		attack()
-	else:
+	if player_can_move:
+		var direction = Input.get_vector("left", "right", "up", "down")
 		if direction.x == 0 && direction.y == 0:
-			velocity *= SLIDE_FACTOR
+			player_state = "idle"
 		else:
-			velocity = direction * SPEED
+			player_state = "walking"
 		
-		if !player_is_attacking:
-			play_animation(direction, player_state)
-			move_and_slide()
+		if Input.is_action_pressed("attack") && !player_is_attacking:
+			attack()
+		else:
+			if direction.x == 0 && direction.y == 0:
+				velocity *= SLIDE_FACTOR
+			else:
+				velocity = direction * SPEED
+			
+			if !player_is_attacking:
+				play_animation(direction, player_state)
+				move_and_slide()
 
 func attack():
 	player_is_attacking = true

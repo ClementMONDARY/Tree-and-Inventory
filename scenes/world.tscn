@@ -246,3 +246,14 @@ position = Vector2(432, 557)
 
 [node name="player" parent="game_nodes" instance=ExtResource("5_t5ooy")]
 position = Vector2(342, 511)
+
+[node name="main_menu" parent="game_nodes/player/player_camera" index="1"]
+z_index = 1
+
+[connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree" method="_on_player_player_attacking"]
+[connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree2" method="_on_player_player_attacking"]
+[connection signal="game_started" from="game_nodes/player/player_camera/main_menu" to="game_nodes/player" method="_on_main_menu_game_started"]
+
+[editable path="game_nodes/player"]
+[editable path="game_nodes/player/player_camera"]
+[editable path="game_nodes/player/player_camera/main_menu"]

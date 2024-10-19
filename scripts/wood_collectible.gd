@@ -1,6 +1,5 @@
 extends StaticBody2D
 
-var tree: Node
 signal wood_picked
 
 func _ready():
@@ -9,7 +8,7 @@ func _ready():
 func spawn_log():
 	$AnimatedSprite2D.play("spawn")
 	await get_tree().create_timer(0.6).timeout
-	$AnimationPlayer.play("idle")
+	$logAnimation.play("idle")
 	$AnimatedSprite2D.play("idle")
 	$pickArea.monitoring = true
 
