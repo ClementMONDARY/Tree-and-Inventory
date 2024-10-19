@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://b7slmmf6hcf6x"]
+[gd_scene load_steps=21 format=3 uid="uid://b7slmmf6hcf6x"]
 
 [ext_resource type="Texture2D" uid="uid://g6qhpleht7ib" path="res://graphics/Tiny Swords/Resources/Trees/Tree.png" id="1_f8r7q"]
 [ext_resource type="Script" path="res://scripts/tree.gd" id="1_i5mry"]
 [ext_resource type="Texture2D" uid="uid://be0vt1bakj3co" path="res://graphics/Tiny Swords/Resources/Trees/New Piskel-1.png.png" id="2_b2hky"]
+[ext_resource type="AudioStream" uid="uid://caddjnds74wcq" path="res://audio/hit-wood.mp3" id="4_u23jo"]
 
 [sub_resource type="Curve" id="Curve_row7o"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.634831, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -152,7 +153,7 @@ position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_jidfe")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.0736249
+frame_progress = 0.473953
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
@@ -177,6 +178,13 @@ position = Vector2(0, -36)
 libraries = {
 "": SubResource("AnimationLibrary_rlakd")
 }
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="HitSoundEffect" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_u23jo")
+volume_db = -10.306
+pitch_scale = 1.59
 
 [connection signal="body_entered" from="chopArea" to="." method="_on_chop_area_body_entered"]
 [connection signal="body_exited" from="chopArea" to="." method="_on_chop_area_body_exited"]

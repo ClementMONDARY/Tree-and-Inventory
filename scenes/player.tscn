@@ -167,4 +167,8 @@ autoplay = "idle"
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1eutv")
 
+<<<<<<< HEAD
 [node name="player_camera" parent="." instance=ExtResource("3_8kqmi")]
+=======
+[node name="Audio" type="Node" parent="."]
+>>>>>>> e4e383b39700ea6caa3234fda7299c7e71559e9a
