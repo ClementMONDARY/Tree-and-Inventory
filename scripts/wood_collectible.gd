@@ -4,9 +4,9 @@ var tree: Node
 signal wood_picked
 
 func _ready():
-	spawnLog()
+	spawn_log()
 
-func spawnLog():
+func spawn_log():
 	$AnimatedSprite2D.play("spawn")
 	await get_tree().create_timer(0.6).timeout
 	$AnimationPlayer.play("idle")

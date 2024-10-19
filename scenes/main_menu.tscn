@@ -1,0 +1,154 @@
+[gd_scene load_steps=8 format=3 uid="uid://if18q1gjqeef"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_xub1n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oscel"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_n4rou"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hova3"]
+resource_name = "fade_in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bcoju"]
+resource_name = "fade_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wv54a"]
+_data = {
+"RESET": SubResource("Animation_n4rou"),
+"fade_in": SubResource("Animation_hova3"),
+"fade_out": SubResource("Animation_bcoju")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5c1ck"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+shadow_size = 5
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_xub1n")
+
+[node name="Blackscreen" type="Panel" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 965.0
+offset_top = -531.0
+offset_right = 4028.0
+offset_bottom = -380.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-0.659576, 7.07196)
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_oscel")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Blackscreen"]
+libraries = {
+"": SubResource("AnimationLibrary_wv54a")
+}
+
+[node name="Buttons_VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -105.5
+offset_right = 135.5
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="play_button" type="Button" parent="Buttons_VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_5c1ck")
+text = "Play"
+
+[node name="settings_button" type="Button" parent="Buttons_VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_5c1ck")
+text = "Settings"
+
+[node name="exit_button" type="Button" parent="Buttons_VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_5c1ck")
+text = "Exit"
+
+[connection signal="pressed" from="Buttons_VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Buttons_VBoxContainer/settings_button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Buttons_VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]

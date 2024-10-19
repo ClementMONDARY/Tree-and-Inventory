@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2mmab7rpqdd0"]
+
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="1_mwl8u"]
+[ext_resource type="PackedScene" uid="uid://if18q1gjqeef" path="res://scenes/main_menu.tscn" id="2_14ydb"]
+
+[sub_resource type="Animation" id="Animation_a5dal"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_tvhuo"]
+resource_name = "zoom_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_1gtos"]
+resource_name = "zoom_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uk4lq"]
+_data = {
+"RESET": SubResource("Animation_a5dal"),
+"zoom_in": SubResource("Animation_tvhuo"),
+"zoom_out": SubResource("Animation_1gtos")
+}
+
+[node name="player_camera" type="Camera2D"]
+zoom = Vector2(2, 2)
+limit_left = -128
+limit_top = -128
+limit_right = 1216
+limit_bottom = 768
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+script = ExtResource("1_mwl8u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_uk4lq")
+}
+
+[node name="main_menu" parent="." instance=ExtResource("2_14ydb")]
