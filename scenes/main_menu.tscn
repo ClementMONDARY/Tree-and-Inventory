@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://if18q1gjqeef"]
+[gd_scene load_steps=14 format=3 uid="uid://if18q1gjqeef"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_xub1n"]
+[ext_resource type="Texture2D" uid="uid://ygglt58is08q" path="res://graphics/Tiny Swords/UI/Buttons/Button_Blue_3Slides.png" id="2_sn78v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oscel"]
 bg_color = Color(0, 0, 0, 1)
@@ -58,6 +59,10 @@ _data = {
 "fade_in": SubResource("Animation_hova3"),
 "fade_out": SubResource("Animation_bcoju")
 }
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2jdaq"]
+content_margin_bottom = 19.0
+texture = ExtResource("2_sn78v")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5c1ck"]
 bg_color = Color(1, 1, 1, 1)
@@ -139,6 +144,7 @@ size_flags_horizontal = 4
 script = ExtResource("1_xub1n")
 
 [node name="Blackscreen" type="Panel" parent="."]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -180,9 +186,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 6
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_5c1ck")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2jdaq")
 text = "Play"
 
 [node name="settings_button" type="Button" parent="Buttons_VBoxContainer"]
