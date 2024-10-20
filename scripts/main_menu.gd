@@ -32,3 +32,14 @@ func _process(delta: float) -> void:
 		$Buttons_VBoxContainer.visible = true
 		await get_tree().create_timer($Buttons_VBoxContainer/AnimationPlayer.get_animation("fade_in").get_length()).timeout
 		
+
+# Sounds
+
+func _on_play_button_mouse_entered() -> void:
+	$Buttons_VBoxContainer/Hover_Buttons.play()
+
+func _on_settings_button_mouse_entered() -> void:
+	$Buttons_VBoxContainer/Hover_Buttons.play()
+
+func _on_exit_button_mouse_entered() -> void:
+	$Buttons_VBoxContainer/Hover_Buttons.play()
