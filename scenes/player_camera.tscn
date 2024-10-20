@@ -75,3 +75,11 @@ libraries = {
 }
 
 [node name="main_menu" parent="." instance=ExtResource("2_14ydb")]
+
+[node name="Blackscreen" parent="main_menu" index="0"]
+offset_left = 875.0
+offset_top = -534.0
+offset_right = 3531.93
+offset_bottom = -383.0
+
+[editable path="main_menu"]

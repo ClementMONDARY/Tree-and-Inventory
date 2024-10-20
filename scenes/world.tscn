@@ -253,6 +253,7 @@ z_index = 1
 [connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree" method="_on_player_player_attacking"]
 [connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree2" method="_on_player_player_attacking"]
 [connection signal="game_started" from="game_nodes/player/player_camera/main_menu" to="game_nodes/player" method="_on_main_menu_game_started"]
+[connection signal="menu_opened" from="game_nodes/player/player_camera/main_menu" to="game_nodes/player" method="_on_main_menu_menu_opened"]
 
 [editable path="game_nodes/player"]
 [editable path="game_nodes/player/player_camera"]

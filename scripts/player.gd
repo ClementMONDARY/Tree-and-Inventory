@@ -10,6 +10,9 @@ signal player_attacking
 func _on_main_menu_game_started():
 	player_can_move = true
 
+func _on_main_menu_menu_opened() -> void:
+	player_can_move = false
+
 func _physics_process(delta):
 	if player_can_move:
 		var direction = Input.get_vector("left", "right", "up", "down")
