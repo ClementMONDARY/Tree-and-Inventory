@@ -77,7 +77,6 @@ libraries = {
 [node name="main_menu" parent="." instance=ExtResource("2_14ydb")]
 
 [node name="Blackscreen" parent="main_menu" index="0"]
-visible = false
 offset_left = 875.0
 offset_top = -534.0
 offset_right = 3531.93

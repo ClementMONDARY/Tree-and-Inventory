@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://if18q1gjqeef"]
+[gd_scene load_steps=23 format=3 uid="uid://if18q1gjqeef"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_xub1n"]
-[ext_resource type="Texture2D" uid="uid://ygglt58is08q" path="res://graphics/Tiny Swords/UI/Buttons/Button_Blue_3Slides.png" id="2_sn78v"]
+[ext_resource type="FontFile" uid="uid://c0v7apftvxddm" path="res://graphics/Tiny Swords/UI/Font/dpcomic.ttf" id="2_6uia3"]
+[ext_resource type="Texture2D" uid="uid://dk3xnwcl8eg0h" path="res://graphics/Tiny Swords/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="3_w7ncq"]
+[ext_resource type="Texture2D" uid="uid://bv8070q4jrpcj" path="res://graphics/Tiny Swords/UI/Ribbons/Ribbon_Blue_3Slides.png" id="4_4p7td"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oscel"]
 bg_color = Color(0, 0, 0, 1)
@@ -60,22 +62,65 @@ _data = {
 "fade_out": SubResource("Animation_bcoju")
 }
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2jdaq"]
-content_margin_bottom = 19.0
-texture = ExtResource("2_sn78v")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e6s8o"]
+content_margin_bottom = 44.0
+texture = ExtResource("4_4p7td")
+texture_margin_left = 64.0
+texture_margin_right = 64.0
+expand_margin_left = 95.0
+expand_margin_top = 25.0
+expand_margin_right = 95.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5c1ck"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-shadow_size = 5
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jy7a"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bpc7h"]
+load_path = "res://.godot/imported/Button_Blue_3Slides.png-9e93ce65cdc1e27f131b5828c0c6fd60.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fylw"]
+content_margin_left = 5.0
+content_margin_top = 17.0
+content_margin_right = 5.0
+content_margin_bottom = 28.0
+texture = SubResource("CompressedTexture2D_bpc7h")
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 10.0
+modulate_color = Color(0.775063, 0.775063, 0.775063, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s5olk"]
+load_path = "res://.godot/imported/Button_Blue_3Slides_Pressed.png-a6c43c683623d2c6e35f2aebb334a7f9.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2u55m"]
+content_margin_left = 5.0
+content_margin_top = 32.0
+content_margin_right = 5.0
+content_margin_bottom = 28.0
+texture = SubResource("CompressedTexture2D_s5olk")
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 10.0
+modulate_color = Color(0.775063, 0.775063, 0.775063, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vh101"]
+load_path = "res://.godot/imported/Button_Blue_3Slides.png-9e93ce65cdc1e27f131b5828c0c6fd60.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdm5g"]
+content_margin_left = 5.0
+content_margin_top = 17.0
+content_margin_right = 5.0
+content_margin_bottom = 28.0
+texture = SubResource("CompressedTexture2D_vh101")
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8503"]
+content_margin_left = 5.0
+content_margin_top = 32.0
+content_margin_right = 5.0
+content_margin_bottom = 38.0
+texture = ExtResource("3_w7ncq")
+modulate_color = Color(0.775063, 0.775063, 0.775063, 1)
 
 [sub_resource type="Animation" id="Animation_fyjpk"]
 length = 0.001
@@ -175,38 +220,74 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.5
-offset_top = -105.5
-offset_right = 135.5
-offset_bottom = 105.5
+offset_left = -140.0
+offset_top = -142.0
+offset_right = 140.0
+offset_bottom = 142.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Buttons_VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_6uia3")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxTexture_e6s8o")
+text = "Game Name"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="play_button" type="Button" parent="Buttons_VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxTexture_2jdaq")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_6uia3")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7jy7a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6fylw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2u55m")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qdm5g")
+keep_pressed_outside = true
 text = "Play"
 
 [node name="settings_button" type="Button" parent="Buttons_VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 6
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_5c1ck")
-text = "Settings"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_6uia3")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7jy7a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6fylw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g8503")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qdm5g")
+keep_pressed_outside = true
+text = "Settings
+"
 
 [node name="exit_button" type="Button" parent="Buttons_VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 6
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_5c1ck")
-text = "Exit"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_6uia3")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7jy7a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6fylw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g8503")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qdm5g")
+keep_pressed_outside = true
+text = "Exit
+"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Buttons_VBoxContainer"]
 libraries = {
