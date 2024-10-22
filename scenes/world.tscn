@@ -250,6 +250,9 @@ position = Vector2(342, 511)
 [node name="main_menu" parent="game_nodes/player/player_camera" index="1"]
 z_index = 1
 
+[node name="Blackscreen" parent="game_nodes/player/player_camera/main_menu" index="0"]
+visible = true
+
 [connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree" method="_on_player_player_attacking"]
 [connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree2" method="_on_player_player_attacking"]
 [connection signal="game_started" from="game_nodes/player/player_camera/main_menu" to="game_nodes/player" method="_on_main_menu_game_started"]

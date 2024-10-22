@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://if18q1gjqeef"]
+[gd_scene load_steps=25 format=3 uid="uid://if18q1gjqeef"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_xub1n"]
 [ext_resource type="FontFile" uid="uid://c0v7apftvxddm" path="res://graphics/Tiny Swords/UI/Font/dpcomic.ttf" id="2_6uia3"]
 [ext_resource type="Texture2D" uid="uid://dk3xnwcl8eg0h" path="res://graphics/Tiny Swords/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="3_w7ncq"]
 [ext_resource type="Texture2D" uid="uid://bv8070q4jrpcj" path="res://graphics/Tiny Swords/UI/Ribbons/Ribbon_Blue_3Slides.png" id="4_4p7td"]
 [ext_resource type="AudioStream" uid="uid://c768j7r671i87" path="res://audio/UI/Button Hover.wav" id="5_r5wot"]
+[ext_resource type="AudioStream" uid="uid://cdr5vgep8od7c" path="res://audio/UI/Exit game.mp3" id="6_rr2ju"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oscel"]
 bg_color = Color(0, 0, 0, 1)
@@ -190,6 +191,7 @@ size_flags_horizontal = 4
 script = ExtResource("1_xub1n")
 
 [node name="Blackscreen" type="Panel" parent="."]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -298,6 +300,9 @@ libraries = {
 stream = ExtResource("5_r5wot")
 volume_db = 16.217
 pitch_scale = 1.64
+
+[node name="ExitGame" type="AudioStreamPlayer" parent="Buttons_VBoxContainer"]
+stream = ExtResource("6_rr2ju")
 
 [connection signal="mouse_entered" from="Buttons_VBoxContainer/play_button" to="." method="_on_play_button_mouse_entered"]
 [connection signal="pressed" from="Buttons_VBoxContainer/play_button" to="." method="_on_play_button_pressed"]

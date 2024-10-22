@@ -20,6 +20,7 @@ func _on_settings_button_pressed():
 
 func _on_exit_button_pressed():
 	$Blackscreen/AnimationPlayer.play("fade_in")
+	$Buttons_VBoxContainer/ExitGame.play()
 	await get_tree().create_timer($Blackscreen/AnimationPlayer.get_animation("fade_in").get_length()).timeout
 	get_tree().quit()
 
@@ -31,7 +32,6 @@ func _process(delta: float) -> void:
 		%AnimationPlayer.play("zoom_out")
 		$Buttons_VBoxContainer.visible = true
 		await get_tree().create_timer($Buttons_VBoxContainer/AnimationPlayer.get_animation("fade_in").get_length()).timeout
-		
 
 # Sounds
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cdr5vgep8od7c"
+path="res://.godot/imported/Exit game.mp3-9a3f52e53e8f8a731014166fc60ec4d3.mp3str"
+
+[deps]
+
+source_file="res://audio/UI/Exit game.mp3"
+dest_files=["res://.godot/imported/Exit game.mp3-9a3f52e53e8f8a731014166fc60ec4d3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
