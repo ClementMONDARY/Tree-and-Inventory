@@ -43,11 +43,11 @@ func attack():
 	player_is_attacking = false
 	$AnimatedSprite2D.play("idle")
 
-func play_animation(direction: Vector2, player_state: String):
-	if player_state == "idle":
+func play_animation(direction: Vector2, current_player_state: String):
+	if current_player_state == "idle":
 		if !player_is_attacking:
 			$AnimatedSprite2D.play("idle")
-	elif player_state == "walking":
+	elif current_player_state == "walking":
 		$AnimatedSprite2D.play("walking")
 	
 	if direction.x < 0:

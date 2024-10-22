@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmn6c1d1mar3f"
+path="res://.godot/imported/Ambient Video Game Music D&D – Forests 2 - Track 1 Preview.mp3-8576a3e5e25c6ed5ae72388d130866a0.mp3str"
+
+[deps]
+
+source_file="res://audio/music/Ambient Video Game Music D&D – Forests 2 - Track 1 Preview.mp3"
+dest_files=["res://.godot/imported/Ambient Video Game Music D&D – Forests 2 - Track 1 Preview.mp3-8576a3e5e25c6ed5ae72388d130866a0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

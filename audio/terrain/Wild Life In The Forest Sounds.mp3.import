@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1tgwl3qbuld8"
+path="res://.godot/imported/Wild Life In The Forest Sounds.mp3-11cb7259f8cfd6d013032abd3969cc32.mp3str"
+
+[deps]
+
+source_file="res://audio/terrain/Wild Life In The Forest Sounds.mp3"
+dest_files=["res://.godot/imported/Wild Life In The Forest Sounds.mp3-11cb7259f8cfd6d013032abd3969cc32.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

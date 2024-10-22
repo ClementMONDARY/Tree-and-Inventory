@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bb8xfqs4gnhc1"
+path="res://.godot/imported/Get out sound effect!!.wav-1cba1dba846687a8a16c6e982618fd0f.sample"
+
+[deps]
+
+source_file="res://audio/characters/Get out sound effect!!.wav"
+dest_files=["res://.godot/imported/Get out sound effect!!.wav-1cba1dba846687a8a16c6e982618fd0f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
