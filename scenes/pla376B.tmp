@@ -240,7 +240,7 @@ stream = ExtResource("5_vbo41")
 volume_db = -20.0
 
 [connection signal="game_started" from="main_menu" to="." method="_on_main_menu_game_started"]
-[connection signal="pressed" from="main_menu/Buttons_VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="menu_opened" from="main_menu" to="." method="_on_main_menu_menu_opened"]
 [connection signal="pressed" from="main_menu/Buttons_VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="main_menu/Buttons_VBoxContainer/exit_button" to="Blackscreen" method="_on_exit_button_pressed"]
 

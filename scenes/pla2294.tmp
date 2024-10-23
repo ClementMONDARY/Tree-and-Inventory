@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2mmab7rpqdd0"]
+[gd_scene load_steps=17 format=3 uid="uid://d2mmab7rpqdd0"]
 
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="1_mwl8u"]
 [ext_resource type="PackedScene" uid="uid://if18q1gjqeef" path="res://scenes/main_menu.tscn" id="2_14ydb"]
@@ -110,6 +110,22 @@ tracks/0/keys = {
 "values": [Vector2(2, 2), Vector2(1.75, 1.75)]
 }
 
+[sub_resource type="Animation" id="Animation_1gtos"]
+resource_name = "zoom_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1.5, 1.5)]
+}
+
 [sub_resource type="Animation" id="Animation_tvhuo"]
 resource_name = "zoom_in_attached"
 length = 2.0
@@ -126,63 +142,13 @@ tracks/0/keys = {
 "values": [Vector2(1.5, 1.5), Vector2(2, 2)]
 }
 
-[sub_resource type="Animation" id="Animation_1gtos"]
-resource_name = "zoom_out_attached"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:zoom")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(1.5, 1.5)]
-}
-
-[sub_resource type="Animation" id="Animation_jslay"]
-resource_name = "zoom_in_detached"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:zoom")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.5, 1.5), Vector2(1.75, 1.75)]
-}
-
-[sub_resource type="Animation" id="Animation_vrny7"]
-resource_name = "zoom_out_detached"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:zoom")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.75, 1.75), Vector2(1.5, 1.5)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uk4lq"]
 _data = {
 "RESET": SubResource("Animation_a5dal"),
 "attach_to_player_zoom": SubResource("Animation_qjpun"),
 "detach_from_player_zoom": SubResource("Animation_0tx0n"),
 "zoom_in_attached": SubResource("Animation_tvhuo"),
-"zoom_in_detached": SubResource("Animation_jslay"),
-"zoom_out_attached": SubResource("Animation_1gtos"),
-"zoom_out_detached": SubResource("Animation_vrny7")
+"zoom_out": SubResource("Animation_1gtos")
 }
 
 [node name="player_camera" type="Camera2D"]
@@ -240,7 +206,7 @@ stream = ExtResource("5_vbo41")
 volume_db = -20.0
 
 [connection signal="game_started" from="main_menu" to="." method="_on_main_menu_game_started"]
-[connection signal="pressed" from="main_menu/Buttons_VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="menu_opened" from="main_menu" to="." method="_on_main_menu_menu_opened"]
 [connection signal="pressed" from="main_menu/Buttons_VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="main_menu/Buttons_VBoxContainer/exit_button" to="Blackscreen" method="_on_exit_button_pressed"]
 

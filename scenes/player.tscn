@@ -168,3 +168,9 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1eutv")
 
 [node name="player_camera" parent="." instance=ExtResource("3_8kqmi")]
+
+[connection signal="menu_opened" from="player_camera/main_menu" to="." method="_on_main_menu_menu_opened"]
+[connection signal="pressed" from="player_camera/main_menu/Buttons_VBoxContainer/exit_button" to="player_camera/Blackscreen" method="_on_exit_button_pressed"]
+
+[editable path="player_camera"]
+[editable path="player_camera/main_menu"]

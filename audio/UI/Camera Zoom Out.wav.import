@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjqrnuosvq1of"
+path="res://.godot/imported/Camera Zoom Out.wav-6a6e68c88d29b751c814bd6888943465.sample"
+
+[deps]
+
+source_file="res://audio/UI/Camera Zoom Out.wav"
+dest_files=["res://.godot/imported/Camera Zoom Out.wav-6a6e68c88d29b751c814bd6888943465.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
