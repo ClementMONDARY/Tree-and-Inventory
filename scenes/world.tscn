@@ -355,9 +355,7 @@ libraries = {
 [connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree" method="_on_player_player_attacking"]
 [connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree2" method="_on_player_player_attacking"]
 [connection signal="game_started" from="game_nodes/player/player_camera/main_menu" to="game_nodes/player" method="_on_main_menu_game_started"]
-[connection signal="menu_opened" from="game_nodes/player/player_camera/main_menu" to="game_nodes/player" method="_on_main_menu_menu_opened"]
 [connection signal="pressed" from="game_nodes/player/player_camera/main_menu/Buttons_VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="game_nodes/player/player_camera/main_menu/Buttons_VBoxContainer/exit_button" to="game_nodes/player/player_camera/Blackscreen" method="_on_exit_button_pressed"]
 
 [editable path="game_nodes/player"]
 [editable path="game_nodes/player/player_camera"]

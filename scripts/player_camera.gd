@@ -30,13 +30,9 @@ func change_camera_mode():
 			detach_anim()
 
 func open_menu():
-	match is_camera_detached:
-		true:
-			is_game_started = false
-			$AnimationPlayer.play("zoom_out_detached")
-		false:
-			is_game_started = false
-			$AnimationPlayer.play("zoom_out_attached")
+	$AnimationPlayer.get_animation("open_menu").track_set_key_value(0, 0, zoom)
+	$AnimationPlayer.play("open_menu")
+	is_game_started = false
 
 func attach_anim():
 	$AnimationPlayer.play("attach_to_player_zoom")
