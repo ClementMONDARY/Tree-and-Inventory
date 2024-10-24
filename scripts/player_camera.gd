@@ -58,8 +58,6 @@ func close_menu_anim():
 			$AnimationPlayer.get_animation("close_menu").track_set_key_value(0, 1, DETACHED_ZOOM)
 		false:
 			$AnimationPlayer.get_animation("close_menu").track_set_key_value(0, 1, ATTACHED_ZOOM)
-	print($AnimationPlayer.get_animation("close_menu").track_get_key_value(0, 0))
-	print($AnimationPlayer.get_animation("close_menu").track_get_key_value(0, 1))
 	$AnimationPlayer.play("close_menu")
 	is_game_started = true
 
