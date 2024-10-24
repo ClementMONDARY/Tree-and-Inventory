@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2mmab7rpqdd0"]
+[gd_scene load_steps=19 format=3 uid="uid://d2mmab7rpqdd0"]
 
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="1_mwl8u"]
 [ext_resource type="PackedScene" uid="uid://if18q1gjqeef" path="res://scenes/main_menu.tscn" id="2_14ydb"]
@@ -158,10 +158,27 @@ tracks/0/keys = {
 "values": [Vector2(8, 8), Vector2(1.5, 1.5)]
 }
 
+[sub_resource type="Animation" id="Animation_txtej"]
+resource_name = "close_menu"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(2, 2)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uk4lq"]
 _data = {
 "RESET": SubResource("Animation_a5dal"),
 "attach_to_player_zoom": SubResource("Animation_qjpun"),
+"close_menu": SubResource("Animation_txtej"),
 "detach_from_player_zoom": SubResource("Animation_0tx0n"),
 "open_menu": SubResource("Animation_021u8"),
 "zoom_in_attached": SubResource("Animation_tvhuo"),
