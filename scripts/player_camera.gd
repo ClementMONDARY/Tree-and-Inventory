@@ -1,10 +1,5 @@
 extends Camera2D
 
-enum MenuAction {
-	Open,
-	Close,
-}
-
 const ATTACHED_ZOOM = Vector2(2, 2)
 const DETACHED_ZOOM = Vector2(1.75, 1.75)
 
@@ -22,7 +17,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("detach") && is_game_started:
 		change_camera_mode()
 	if Input.is_action_just_pressed("escape") && is_game_started:
-		menu_anim(MenuAction.Open)
+		open_menu_anim()
 
 # change_camera_mode -------------------------------------------------------------------------------
 
@@ -47,13 +42,6 @@ func detach_anim():
 
 # menu_anim ----------------------------------------------------------------------------------------
 
-func menu_anim(action: MenuAction):
-	match action:
-		MenuAction.Open:
-			open_menu_anim()
-		MenuAction.Close:
-			close_menu_anim()
-
 func open_menu_anim():
 	camera_anim.get_animation("open_menu").track_set_key_value(0, 0, zoom)
 	camera_anim.play("open_menu")
@@ -73,4 +61,4 @@ func close_menu_anim():
 
 func _on_play_button_pressed() -> void:
 	if !is_game_started:
-		menu_anim(MenuAction.Close)
+		close_menu_anim()
