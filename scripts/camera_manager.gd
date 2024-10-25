@@ -21,11 +21,12 @@ var current_camera: Camera = Camera.Menu
 @onready var freecam: PhantomCamera2D = $FreeCam
 @onready var playercam: PhantomCamera2D = $PlayerCam
 @onready var menucam: PhantomCamera2D = $MenuCam
+@onready var blackscreen_anim: AnimationPlayer = $MenuCam/AnimationPlayer
 
 #region Private Functions
 
 func _ready() -> void:
-	$MenuCam/AnimationPlayer.play("fade_out")
+	blackscreen_anim.play("fade_out")
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape") && is_game_started:
@@ -48,7 +49,8 @@ func _on_play_button_pressed() -> void:
 	is_game_started = true
 
 func _on_exit_button_pressed() -> void:
-	$MenuCam/AnimationPlayer.play("fade_in")
+	blackscreen_anim.get_animation("fade_in").track_set_key_value(0, 0, $MenuCam/BlackScreen.modulate)
+	blackscreen_anim.play("fade_in")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_in":
