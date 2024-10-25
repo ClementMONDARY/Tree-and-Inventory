@@ -1,9 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://bgpvsx1kko1ye"]
+[gd_scene load_steps=23 format=3 uid="uid://bgpvsx1kko1ye"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6ilnb"]
 [ext_resource type="Texture2D" uid="uid://bi5nsmjdr3elt" path="res://graphics/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_a8de7"]
-[ext_resource type="PackedScene" uid="uid://d2mmab7rpqdd0" path="res://scenes/player_camera.tscn" id="3_nkps4"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_teucv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbor8"]
 atlas = ExtResource("2_a8de7")
@@ -167,11 +165,3 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1eutv")
-
-[node name="player_camera" parent="." instance=ExtResource("3_nkps4")]
-position_smoothing_enabled = false
-
-[node name="PhantomCameraHost" type="Node" parent="player_camera"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("4_teucv")
