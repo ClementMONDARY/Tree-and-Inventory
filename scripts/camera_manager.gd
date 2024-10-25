@@ -25,7 +25,7 @@ var current_camera: Camera = Camera.Menu
 #region Private Functions
 
 func _ready() -> void:
-	pass
+	$MenuCam/AnimationPlayer.play("fade_out")
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape") && is_game_started:
@@ -42,6 +42,14 @@ func reset_priorities():
 		if camera != null:
 			camera.priority = 0
 
+func _on_play_button_pressed() -> void:
+	reset_priorities()
+	playercam.priority = 1
+	is_game_started = true
 
-#func _on_play_button_pressed() -> void:
-	#
+func _on_exit_button_pressed() -> void:
+	$MenuCam/AnimationPlayer.play("fade_in")
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "fade_in":
+		get_tree().quit()
