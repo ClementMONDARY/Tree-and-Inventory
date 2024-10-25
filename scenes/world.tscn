@@ -328,6 +328,9 @@ position = Vector2(342, 511)
 [node name="main_menu" parent="game_nodes/player/player_camera" index="2"]
 z_index = 1
 
+[node name="Buttons_VBoxContainer" parent="game_nodes/player/player_camera/main_menu" index="0"]
+visible = true
+
 [node name="Hover_Buttons" parent="game_nodes/player/player_camera/main_menu/Buttons_VBoxContainer" index="5"]
 max_polyphony = 5
 

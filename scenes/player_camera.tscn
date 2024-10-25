@@ -94,6 +94,22 @@ tracks/0/keys = {
 "values": [Vector2(1.75, 1.75), Vector2(2, 2)]
 }
 
+[sub_resource type="Animation" id="Animation_txtej"]
+resource_name = "close_menu"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(2, 2)]
+}
+
 [sub_resource type="Animation" id="Animation_0tx0n"]
 resource_name = "detach_from_player_zoom"
 length = 0.3
@@ -124,22 +140,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(8, 8), Vector2(1.5, 1.5)]
-}
-
-[sub_resource type="Animation" id="Animation_txtej"]
-resource_name = "close_menu"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:zoom")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.5, 1.5), Vector2(2, 2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uk4lq"]
@@ -193,6 +193,7 @@ libraries = {
 }
 
 [node name="main_menu" parent="." instance=ExtResource("2_14ydb")]
+visible = true
 
 [node name="ExitGame" parent="main_menu/Buttons_VBoxContainer" index="6"]
 volume_db = -16.865
@@ -200,11 +201,14 @@ volume_db = -16.865
 [node name="camera_zoom_in" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_krwyu")
 volume_db = -20.0
+max_polyphony = 2
 
 [node name="camera_zoom_out" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_vbo41")
 volume_db = -20.0
+max_polyphony = 2
 
+[connection signal="animation_finished" from="Blackscreen/AnimationPlayer" to="Blackscreen" method="_on_animation_player_animation_finished"]
 [connection signal="game_started" from="main_menu" to="." method="_on_main_menu_game_started"]
 [connection signal="pressed" from="main_menu/Buttons_VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="main_menu/Buttons_VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
