@@ -2,9 +2,11 @@ extends CharacterBody2D
 
 const SPEED = 120
 const SLIDE_FACTOR = 0.75
+
 var player_state = "idle"
 var player_is_attacking = false
 var player_can_move = false
+
 signal player_attacking
 
 func _on_main_menu_game_started():

@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://vy751mwmlex6"]
+
+[ext_resource type="Script" path="res://scripts/camera_manager.gd" id="1_gq21l"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_kyqb7"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_7brpx"]
+[ext_resource type="PackedScene" uid="uid://if18q1gjqeef" path="res://scenes/main_menu.tscn" id="4_7j733"]
+
+[sub_resource type="Resource" id="Resource_qisl8"]
+script = ExtResource("3_7brpx")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_fur0l"]
+script = ExtResource("3_7brpx")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_32q3h"]
+script = ExtResource("3_7brpx")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="CameraManager" type="Node"]
+script = ExtResource("1_gq21l")
+
+[node name="FreeCam" type="Node2D" parent="."]
+script = ExtResource("2_kyqb7")
+zoom = Vector2(1.75, 1.75)
+tween_resource = SubResource("Resource_qisl8")
+
+[node name="PlayerCam" type="Node2D" parent="."]
+script = ExtResource("2_kyqb7")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_fur0l")
+
+[node name="MenuCam" type="Node2D" parent="."]
+script = ExtResource("2_kyqb7")
+zoom = Vector2(1.5, 1.5)
+tween_resource = SubResource("Resource_32q3h")
+
+[node name="main_menu" parent="MenuCam" instance=ExtResource("4_7j733")]
+
+[connection signal="pressed" from="MenuCam/main_menu/Buttons_VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
+
+[editable path="MenuCam/main_menu"]
