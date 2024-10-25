@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dddlnbxr63qnh"]
+[gd_scene load_steps=22 format=3 uid="uid://dddlnbxr63qnh"]
 
 [ext_resource type="Texture2D" uid="uid://bbxq5ufvsfai5" path="res://graphics/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="1_m1dds"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_p3rwi"]
@@ -8,7 +8,45 @@
 [ext_resource type="PackedScene" uid="uid://bgpvsx1kko1ye" path="res://scenes/player.tscn" id="5_t5ooy"]
 [ext_resource type="PackedScene" uid="uid://b7slmmf6hcf6x" path="res://scenes/tree.tscn" id="6_yv3ni"]
 [ext_resource type="AudioStream" uid="uid://b1tgwl3qbuld8" path="res://audio/terrain/Wild Life In The Forest Sounds.mp3" id="7_w4dmv"]
+[ext_resource type="PackedScene" uid="uid://d2mmab7rpqdd0" path="res://scenes/player_camera.tscn" id="8_a6brf"]
 [ext_resource type="AudioStream" uid="uid://cmn6c1d1mar3f" path="res://audio/music/Ambient Video Game Music D&D – Forests 2 - Track 1 Preview.mp3" id="9_t0o8r"]
+
+[sub_resource type="Animation" id="Animation_n2jnh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.928]
+}
+
+[sub_resource type="Animation" id="Animation_881kw"]
+resource_name = "fade_in"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.928, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v88ro"]
+_data = {
+"RESET": SubResource("Animation_n2jnh"),
+"fade_in": SubResource("Animation_881kw")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wend"]
 texture = ExtResource("1_m1dds")
@@ -213,43 +251,6 @@ sources/3 = SubResource("TileSetAtlasSource_0ekld")
 sources/4 = SubResource("TileSetAtlasSource_p8qog")
 sources/5 = SubResource("TileSetAtlasSource_jjx40")
 
-[sub_resource type="Animation" id="Animation_n2jnh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-15.928]
-}
-
-[sub_resource type="Animation" id="Animation_881kw"]
-resource_name = "fade_in"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-15.928, -80.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_v88ro"]
-_data = {
-"RESET": SubResource("Animation_n2jnh"),
-"fade_in": SubResource("Animation_881kw")
-}
-
 [sub_resource type="Animation" id="Animation_6mqbh"]
 length = 0.001
 tracks/0/type = "value"
@@ -290,6 +291,11 @@ _data = {
 [node name="world" type="Node2D"]
 script = ExtResource("1_p3rwi")
 
+[node name="game_nodes_player_player_camera_main_menu_main_music#AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v88ro")
+}
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_7w8no")
 format = 2
@@ -325,19 +331,7 @@ position = Vector2(432, 557)
 [node name="player" parent="game_nodes" instance=ExtResource("5_t5ooy")]
 position = Vector2(342, 511)
 
-[node name="main_menu" parent="game_nodes/player/player_camera" index="2"]
-z_index = 1
-
-[node name="Buttons_VBoxContainer" parent="game_nodes/player/player_camera/main_menu" index="0"]
-visible = true
-
-[node name="Hover_Buttons" parent="game_nodes/player/player_camera/main_menu/Buttons_VBoxContainer" index="5"]
-max_polyphony = 5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="game_nodes/player/player_camera/main_menu/main_music" index="0"]
-libraries = {
-"": SubResource("AnimationLibrary_v88ro")
-}
+[node name="player_camera" parent="game_nodes" instance=ExtResource("8_a6brf")]
 
 [node name="biome_ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_w4dmv")
@@ -357,9 +351,9 @@ libraries = {
 
 [connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree" method="_on_player_player_attacking"]
 [connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree2" method="_on_player_player_attacking"]
-[connection signal="game_started" from="game_nodes/player/player_camera/main_menu" to="game_nodes/player" method="_on_main_menu_game_started"]
-[connection signal="pressed" from="game_nodes/player/player_camera/main_menu/Buttons_VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="game_started" from="game_nodes/player_camera/main_menu" to="game_nodes/player" method="_on_main_menu_game_started"]
+[connection signal="menu_opened" from="game_nodes/player_camera/main_menu" to="game_nodes/player" method="_on_main_menu_menu_opened"]
 
 [editable path="game_nodes/player"]
-[editable path="game_nodes/player/player_camera"]
-[editable path="game_nodes/player/player_camera/main_menu"]
+[editable path="game_nodes/player_camera"]
+[editable path="game_nodes/player_camera/main_menu"]

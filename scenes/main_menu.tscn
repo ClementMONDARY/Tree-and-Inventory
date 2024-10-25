@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://if18q1gjqeef"]
+[gd_scene load_steps=25 format=3 uid="uid://if18q1gjqeef"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_xub1n"]
 [ext_resource type="FontFile" uid="uid://c0v7apftvxddm" path="res://graphics/Tiny Swords/UI/Font/dpcomic.ttf" id="2_6uia3"]
-[ext_resource type="Script" path="res://scenes/buttons_v_box_container.gd" id="2_qtlxa"]
+[ext_resource type="Script" path="res://scripts/buttons_v_box_container.gd" id="2_qtlxa"]
 [ext_resource type="Texture2D" uid="uid://dk3xnwcl8eg0h" path="res://graphics/Tiny Swords/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="3_w7ncq"]
 [ext_resource type="Texture2D" uid="uid://bv8070q4jrpcj" path="res://graphics/Tiny Swords/UI/Ribbons/Ribbon_Blue_3Slides.png" id="4_4p7td"]
 [ext_resource type="AudioStream" uid="uid://c768j7r671i87" path="res://audio/UI/Button Hover.wav" id="5_r5wot"]
@@ -123,6 +123,43 @@ _data = {
 "fade_out": SubResource("Animation_ckmmo")
 }
 
+[sub_resource type="Animation" id="Animation_dub7t"]
+resource_name = "fade_in"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.928, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_y1vgq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.928]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b7g4b"]
+_data = {
+"RESET": SubResource("Animation_y1vgq"),
+"fade_in": SubResource("Animation_dub7t")
+}
+
 [node name="main_menu" type="Control"]
 visible = false
 layout_mode = 3
@@ -232,6 +269,11 @@ stream = ExtResource("7_g3ec3")
 volume_db = -15.928
 autoplay = true
 parameters/looping = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="main_music"]
+libraries = {
+"": SubResource("AnimationLibrary_b7g4b")
+}
 
 [connection signal="mouse_entered" from="Buttons_VBoxContainer/play_button" to="." method="_on_play_button_mouse_entered"]
 [connection signal="mouse_entered" from="Buttons_VBoxContainer/play_button" to="Buttons_VBoxContainer" method="_on_play_button_mouse_entered"]
