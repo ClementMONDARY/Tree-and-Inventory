@@ -310,16 +310,30 @@ libraries = {
 
 [node name="FreeCam" parent="CameraManager" index="0"]
 position = Vector2(342, 511)
+limit_left = -128
+limit_top = -128
+limit_right = 1216
+limit_bottom = 768
 
 [node name="PlayerCam" parent="CameraManager" index="1" node_paths=PackedStringArray("follow_target")]
 position = Vector2(342, 511)
 follow_mode = 1
 follow_target = NodePath("../../game_nodes/player")
+follow_damping = true
+follow_damping_value = Vector2(0.2, 0.2)
+limit_left = -128
+limit_top = -128
+limit_right = 1216
+limit_bottom = 768
 
 [node name="MenuCam" parent="CameraManager" index="2" node_paths=PackedStringArray("follow_target")]
 position = Vector2(342, 511)
 follow_mode = 1
 follow_target = NodePath("../../game_nodes/player")
+limit_left = -128
+limit_top = -128
+limit_right = 1216
+limit_bottom = 768
 
 [node name="main_menu" parent="CameraManager/MenuCam" index="0"]
 visible = true
@@ -332,6 +346,10 @@ visible = true
 physics_interpolation_mode = 1
 position = Vector2(342, 511)
 zoom = Vector2(1.5, 1.5)
+limit_left = -128
+limit_top = -128
+limit_right = 1216
+limit_bottom = 768
 position_smoothing_speed = 50.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
