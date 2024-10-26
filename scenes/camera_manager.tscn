@@ -88,18 +88,21 @@ script = ExtResource("2_kyqb7")
 zoom = Vector2(1.75, 1.75)
 tween_resource = SubResource("Resource_qisl8")
 tween_on_load = false
+draw_limits = true
 
 [node name="PlayerCam" type="Node2D" parent="."]
 script = ExtResource("2_kyqb7")
 zoom = Vector2(2, 2)
 tween_resource = SubResource("Resource_fur0l")
 tween_on_load = false
+draw_limits = true
 
 [node name="MenuCam" type="Node2D" parent="."]
 script = ExtResource("2_kyqb7")
 priority = 1
 zoom = Vector2(1.5, 1.5)
 tween_resource = SubResource("Resource_32q3h")
+draw_limits = true
 
 [node name="main_menu" parent="MenuCam" instance=ExtResource("4_7j733")]
 

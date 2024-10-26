@@ -26,6 +26,7 @@ var current_camera: Camera = Camera.Menu
 #region Private Functions
 
 func _ready() -> void:
+	$MenuCam/BlackScreen.visible = true
 	blackscreen_anim.play("fade_out")
 
 func _process(_delta: float) -> void:

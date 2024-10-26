@@ -305,7 +305,6 @@ draw_limits = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(66, -91.205)
 zoom = Vector2(2, 2)
-process_callback = 0
 limit_left = -387
 limit_top = -528
 limit_right = 433
