@@ -7,8 +7,8 @@
 
 [sub_resource type="Resource" id="Resource_qisl8"]
 script = ExtResource("3_7brpx")
-duration = 1.0
-transition = 0
+duration = 0.5
+transition = 1
 ease = 2
 
 [sub_resource type="Resource" id="Resource_fur0l"]
@@ -105,8 +105,14 @@ tween_resource = SubResource("Resource_32q3h")
 draw_limits = true
 
 [node name="main_menu" parent="MenuCam" instance=ExtResource("4_7j733")]
+visible = true
+z_index = 10
+
+[node name="Buttons_VBoxContainer" parent="MenuCam/main_menu" index="0"]
+visible = true
 
 [node name="BlackScreen" type="Panel" parent="MenuCam"]
+visible = false
 z_index = 100
 z_as_relative = false
 anchors_preset = 8

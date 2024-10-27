@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dddlnbxr63qnh"]
+[gd_scene load_steps=21 format=3 uid="uid://dddlnbxr63qnh"]
 
 [ext_resource type="Texture2D" uid="uid://bbxq5ufvsfai5" path="res://graphics/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="1_m1dds"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_p3rwi"]
@@ -252,6 +252,9 @@ _data = {
 "fade_out": SubResource("Animation_23yso")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5g7q"]
+size = Vector2(1289.5, 782)
+
 [node name="world" type="Node2D"]
 script = ExtResource("1_p3rwi")
 
@@ -290,6 +293,41 @@ position = Vector2(432, 557)
 [node name="player" parent="game_nodes" instance=ExtResource("5_t5ooy")]
 position = Vector2(342, 511)
 
+[node name="CameraManager" parent="game_nodes" instance=ExtResource("10_ljfee")]
+
+[node name="FreeCam" parent="game_nodes/CameraManager" index="0"]
+position = Vector2(218.143, 121.143)
+limit_left = -128
+limit_top = -128
+limit_right = 1216
+limit_bottom = 768
+limit_target = NodePath("../../../MapDelimiter")
+
+[node name="PlayerCam" parent="game_nodes/CameraManager" index="1" node_paths=PackedStringArray("follow_target")]
+position = Vector2(342, 511)
+follow_mode = 1
+follow_target = NodePath("../../player")
+follow_damping = true
+follow_damping_value = Vector2(0.2, 0.2)
+limit_left = -128
+limit_top = -128
+limit_right = 1216
+limit_bottom = 768
+limit_target = NodePath("../../../MapDelimiter")
+
+[node name="MenuCam" parent="game_nodes/CameraManager" index="2" node_paths=PackedStringArray("follow_target")]
+position = Vector2(342, 502)
+follow_mode = 1
+follow_target = NodePath("../../player")
+limit_left = -128
+limit_top = -128
+limit_right = 1216
+limit_bottom = 768
+limit_target = NodePath("../../../MapDelimiter")
+
+[node name="ExitGame" parent="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer" index="6"]
+volume_db = -19.676
+
 [node name="biome_ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_w4dmv")
 volume_db = -13.117
@@ -306,53 +344,13 @@ libraries = {
 "": SubResource("AnimationLibrary_ixmwh")
 }
 
-[node name="CameraManager" parent="." instance=ExtResource("10_ljfee")]
-
-[node name="FreeCam" parent="CameraManager" index="0"]
-position = Vector2(342, 511)
-limit_left = -128
-limit_top = -128
-limit_right = 1216
-limit_bottom = 768
-
-[node name="PlayerCam" parent="CameraManager" index="1" node_paths=PackedStringArray("follow_target")]
-position = Vector2(342, 511)
-follow_mode = 1
-follow_target = NodePath("../../game_nodes/player")
-follow_damping = true
-follow_damping_value = Vector2(0.2, 0.2)
-limit_left = -128
-limit_top = -128
-limit_right = 1216
-limit_bottom = 768
-
-[node name="MenuCam" parent="CameraManager" index="2" node_paths=PackedStringArray("follow_target")]
-position = Vector2(342, 511)
-follow_mode = 1
-follow_target = NodePath("../../game_nodes/player")
-limit_left = -128
-limit_top = -128
-limit_right = 1216
-limit_bottom = 768
-
-[node name="main_menu" parent="CameraManager/MenuCam" index="0"]
-visible = true
-z_index = 10
-
-[node name="Buttons_VBoxContainer" parent="CameraManager/MenuCam/main_menu" index="0"]
-visible = true
-
-[node name="BlackScreen" parent="CameraManager/MenuCam" index="1"]
-visible = false
-
 [node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 1
-position = Vector2(342, 511)
+position = Vector2(342, 502)
 zoom = Vector2(1.5, 1.5)
-limit_left = -128
-limit_top = -128
-limit_right = 1216
-limit_bottom = 768
+limit_left = -111
+limit_top = -64
+limit_right = 1179
+limit_bottom = 718
 position_smoothing_speed = 50.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -360,10 +358,15 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("11_dvbcy")
 
+[node name="MapDelimiter" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(534.25, 327)
+shape = SubResource("RectangleShape2D_w5g7q")
+
 [connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree" method="_on_player_player_attacking"]
 [connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree2" method="_on_player_player_attacking"]
-[connection signal="pressed" from="CameraManager/MenuCam/main_menu/Buttons_VBoxContainer/play_button" to="game_nodes/player" method="_on_play_button_pressed"]
+[connection signal="pressed" from="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer/play_button" to="game_nodes/player" method="_on_play_button_pressed"]
 
 [editable path="game_nodes/player"]
-[editable path="CameraManager"]
-[editable path="CameraManager/MenuCam/main_menu"]
+[editable path="game_nodes/CameraManager"]
+[editable path="game_nodes/CameraManager/MenuCam/main_menu"]

@@ -2,21 +2,12 @@ extends Node
 
 #region Enum
 
-enum Camera {
-	Free = 0,
-	Player = 1,
-	Menu = 2,
-}
-
 #region Const
-
-
 
 #region Variables
 
 var is_game_started = false
 var is_camera_detached = false
-var current_camera: Camera = Camera.Menu
 
 @onready var freecam: PhantomCamera2D = $FreeCam
 @onready var playercam: PhantomCamera2D = $PlayerCam
@@ -33,20 +24,32 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape") && is_game_started:
 		is_game_started = false
 		close_menu()
+	if Input.is_action_just_pressed("detach"):
+		print("swap_cam")
+		change_camera_mode()
+
+func change_camera_mode():
+	reset_priorities()
+	match is_camera_detached:
+		true:
+			playercam.set_priority(1)
+		false:
+			freecam.position = playercam.position
+			freecam.set_priority(1)
 
 func close_menu():
 	reset_priorities()
-	menucam.priority = 1
+	menucam.set_priority(1)
 
 func reset_priorities():
 	var camera_list = [freecam, playercam, menucam]
 	for camera in camera_list:
 		if camera != null:
-			camera.priority = 0
+			camera.set_priority(0)
 
 func _on_play_button_pressed() -> void:
 	reset_priorities()
-	playercam.priority = 1
+	playercam.set_priority(1)
 	is_game_started = true
 
 func _on_exit_button_pressed() -> void:
