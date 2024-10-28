@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dddlnbxr63qnh"]
+[gd_scene load_steps=22 format=3 uid="uid://dddlnbxr63qnh"]
 
 [ext_resource type="Texture2D" uid="uid://bbxq5ufvsfai5" path="res://graphics/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="1_m1dds"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_p3rwi"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7slmmf6hcf6x" path="res://scenes/tree.tscn" id="6_yv3ni"]
 [ext_resource type="AudioStream" uid="uid://b1tgwl3qbuld8" path="res://audio/terrain/Wild Life In The Forest Sounds.mp3" id="7_w4dmv"]
 [ext_resource type="AudioStream" uid="uid://cmn6c1d1mar3f" path="res://audio/music/Ambient Video Game Music D&D – Forests 2 - Track 1 Preview.mp3" id="9_t0o8r"]
-[ext_resource type="PackedScene" uid="uid://b5pn6keucnig7" path="res://scenes/camera_manager.tscn" id="10_ljfee"]
+[ext_resource type="PackedScene" uid="uid://rbvx0rucyuye" path="res://scenes/camera_manager.tscn" id="10_ljfee"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="11_dvbcy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wend"]
@@ -332,9 +332,8 @@ limit_right = 1216
 limit_bottom = 768
 limit_target = NodePath("../../../MapDelimiter")
 
-[node name="MenuCam" parent="game_nodes/CameraManager" index="2" node_paths=PackedStringArray("follow_target")]
+[node name="MenuCam" parent="game_nodes/CameraManager" index="2"]
 position = Vector2(352, 458.8)
-follow_target = NodePath("../../player/AnimatedSprite2D")
 limit_left = -128
 limit_top = -128
 limit_right = 1216
@@ -394,5 +393,7 @@ shape = SubResource("RectangleShape2D_w5g7q")
 [connection signal="pressed" from="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
 
 [editable path="game_nodes/player"]
+[editable path="game_nodes/player/player_camera"]
+[editable path="game_nodes/player/player_camera/main_menu"]
 [editable path="game_nodes/CameraManager"]
 [editable path="game_nodes/CameraManager/MenuCam/main_menu"]
