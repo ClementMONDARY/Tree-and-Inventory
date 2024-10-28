@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://w20wokw3ohsq"]
+[gd_scene load_steps=15 format=3 uid="uid://w20wokw3ohsq"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/examples/scripts/2D/2d_room_limit_tween.gd" id="1_ijqyv"]
 [ext_resource type="Texture2D" uid="uid://c77npili4pel4" path="res://addons/phantom_camera/examples/textures/2D/level_spritesheet.png" id="1_wmhqb"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_4b648"]
 [ext_resource type="PackedScene" uid="uid://7kh0xydx0b1o" path="res://addons/phantom_camera/examples/example_scenes/2D/sub_scenes/playable_character_2d.tscn" id="5_pr2x5"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_twplb"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="9_w5e16"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_easgx"]
 texture = ExtResource("1_wmhqb")
@@ -303,6 +302,7 @@ follow_damping = true
 draw_limits = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
 position = Vector2(66, -91.205)
 zoom = Vector2(2, 2)
 limit_left = -387
@@ -311,10 +311,5 @@ limit_right = 433
 limit_bottom = 288
 position_smoothing_speed = 10.0
 editor_draw_limits = true
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("9_w5e16")
 
 [editable path="CharacterBody2D"]

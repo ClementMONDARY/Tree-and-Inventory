@@ -12,6 +12,8 @@ var is_camera_detached = false
 @onready var freecam: PhantomCamera2D = $FreeCam
 @onready var playercam: PhantomCamera2D = $PlayerCam
 @onready var menucam: PhantomCamera2D = $MenuCam
+@onready var zoom_in_sound: AudioStreamPlayer = $camera_zoom_in
+@onready var zoom_out_sound: AudioStreamPlayer = $camera_zoom_out
 @onready var blackscreen_anim: AnimationPlayer = menucam.get_node("AnimationPlayer")
 @onready var menu_tween_duration: float = 2.00
 @onready var freecam_tween_duration: float = 0.5
@@ -33,37 +35,37 @@ func change_camera_mode():
 	reset_priorities()
 	match is_camera_detached:
 		true:
-			playercam.set_tween_duration(freecam_tween_duration)
-			playercam.set_priority(1)
+			zoom_in_sound.play()
+			playercam.tween_duration = freecam_tween_duration
+			playercam.priority = 1
 			is_camera_detached = false
 		false:
-			freecam.set_tween_duration(freecam_tween_duration)
+			zoom_out_sound.play()
+			freecam.tween_duration = freecam_tween_duration
 			freecam.position = playercam.position
-			freecam.set_priority(1)
+			freecam.priority = 1
 			is_camera_detached = true
 
 func open_menu():
 	reset_priorities()
-	menucam.position = playercam.position
-	menucam.set_priority(1)
+	menucam.position = freecam.position if is_camera_detached else playercam.position
+	menucam.priority = 1
 
 func reset_priorities():
 	var camera_list = [freecam, playercam, menucam]
 	for camera in camera_list:
 		if camera != null:
-			camera.set_priority(0)
+			camera.priority = 0
 
 func _on_play_button_pressed() -> void:
 	reset_priorities()
-	match is_camera_detached:
-		true:
-			freecam.set_tween_duration(menu_tween_duration)
-			freecam.position = playercam.position
-			freecam.set_priority(1)
-		false:
-			playercam.set_tween_duration(menu_tween_duration)
-			playercam.set_priority(1)
+	
+	var active_cam = freecam if is_camera_detached else playercam
+	active_cam.tween_duration = menu_tween_duration
+	active_cam.priority = 1
+	
 	is_game_started = true
+
 
 func _on_exit_button_pressed() -> void:
 	blackscreen_anim.get_animation("fade_in").track_set_key_value(0, 0, $MenuCam/BlackScreen.modulate)
