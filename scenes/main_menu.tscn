@@ -260,6 +260,7 @@ libraries = {
 stream = ExtResource("5_r5wot")
 volume_db = 16.217
 pitch_scale = 1.64
+max_polyphony = 5
 
 [node name="ExitGame" type="AudioStreamPlayer" parent="Buttons_VBoxContainer"]
 stream = ExtResource("6_rr2ju")

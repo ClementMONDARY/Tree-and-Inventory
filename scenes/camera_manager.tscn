@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5pn6keucnig7"]
+[gd_scene load_steps=15 format=3 uid="uid://bm1pooh1mf2q8"]
 
 [ext_resource type="Script" path="res://scripts/camera_manager.gd" id="1_gq21l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_kyqb7"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_7brpx"]
 [ext_resource type="PackedScene" uid="uid://if18q1gjqeef" path="res://scenes/main_menu.tscn" id="4_7j733"]
+[ext_resource type="AudioStream" uid="uid://dg1nkhuqe0y8o" path="res://audio/UI/Camera Zoom In.wav" id="5_whf46"]
+[ext_resource type="AudioStream" uid="uid://bjqrnuosvq1of" path="res://audio/UI/Camera Zoom Out.wav" id="6_byu4h"]
 
 [sub_resource type="Resource" id="Resource_qisl8"]
 script = ExtResource("3_7brpx")
@@ -134,6 +136,16 @@ root_node = NodePath("../BlackScreen")
 libraries = {
 "": SubResource("AnimationLibrary_pssdo")
 }
+
+[node name="camera_zoom_in" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_whf46")
+volume_db = -20.0
+max_polyphony = 2
+
+[node name="camera_zoom_out" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_byu4h")
+volume_db = -20.0
+max_polyphony = 2
 
 [connection signal="pressed" from="MenuCam/main_menu/Buttons_VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MenuCam/main_menu/Buttons_VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]

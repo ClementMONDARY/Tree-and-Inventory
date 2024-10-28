@@ -182,7 +182,7 @@ libraries = {
 
 [node name="HitSoundEffect" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_u23jo")
-volume_db = -10.306
+volume_db = -16.865
 pitch_scale = 1.59
 
 [connection signal="body_entered" from="chopArea" to="." method="_on_chop_area_body_entered"]
