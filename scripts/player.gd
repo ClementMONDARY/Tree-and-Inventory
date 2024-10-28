@@ -2,16 +2,15 @@ extends CharacterBody2D
 
 const SPEED = 120
 const SLIDE_FACTOR = 0.75
+
 var player_state = "idle"
 var player_is_attacking = false
 var player_can_move = false
+
 signal player_attacking
 
-func _on_main_menu_game_started():
+func _on_play_button_pressed() -> void:
 	player_can_move = true
-
-func _on_main_menu_menu_opened() -> void:
-	player_can_move = false
 
 func _physics_process(delta):
 	if player_can_move:
@@ -32,6 +31,8 @@ func _physics_process(delta):
 			if !player_is_attacking:
 				play_animation(direction, player_state)
 				move_and_slide()
+	if Input.is_action_just_pressed("escape") && player_can_move:
+		player_can_move = false
 
 func attack():
 	player_is_attacking = true

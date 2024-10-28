@@ -21,6 +21,7 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 
 [display]
 
+window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://graphics/Tiny Swords/UI/Pointers/01.png"
 
 [editor_plugins]

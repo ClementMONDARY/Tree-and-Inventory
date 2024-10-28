@@ -5,7 +5,7 @@ signal menu_opened
 var is_game_started = false
 
 func _ready():
-	pass
+	visible = true
 
 func _on_settings_button_pressed():
 	pass # Replace with function body.
