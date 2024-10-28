@@ -113,6 +113,9 @@ z_index = 10
 [node name="Buttons_VBoxContainer" parent="MenuCam/main_menu" index="0"]
 visible = true
 
+[node name="Hover_Buttons" parent="MenuCam/main_menu/Buttons_VBoxContainer" index="5"]
+max_polyphony = 1
+
 [node name="BlackScreen" type="Panel" parent="MenuCam"]
 visible = false
 z_index = 100
