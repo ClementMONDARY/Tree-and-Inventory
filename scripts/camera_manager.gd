@@ -12,8 +12,9 @@ var is_camera_detached = false
 @onready var freecam: PhantomCamera2D = $FreeCam
 @onready var playercam: PhantomCamera2D = $PlayerCam
 @onready var menucam: PhantomCamera2D = $MenuCam
-@onready var blackscreen_anim: AnimationPlayer = $MenuCam/AnimationPlayer
-@onready var playercam_tween_duration: float = playercam.tween_duration
+@onready var blackscreen_anim: AnimationPlayer = menucam.get_node("AnimationPlayer")
+@onready var menu_tween_duration: float = 2.00
+@onready var freecam_tween_duration: float = 0.5
 
 #region Private Functions
 
@@ -24,24 +25,26 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape") && is_game_started:
 		is_game_started = false
-		close_menu()
+		open_menu()
 	if Input.is_action_just_pressed("detach") && is_game_started:
-		print("swap_cam")
 		change_camera_mode()
 
 func change_camera_mode():
 	reset_priorities()
 	match is_camera_detached:
 		true:
+			playercam.set_tween_duration(freecam_tween_duration)
 			playercam.set_priority(1)
 			is_camera_detached = false
 		false:
+			freecam.set_tween_duration(freecam_tween_duration)
 			freecam.position = playercam.position
 			freecam.set_priority(1)
 			is_camera_detached = true
 
-func close_menu():
+func open_menu():
 	reset_priorities()
+	menucam.position = playercam.position
 	menucam.set_priority(1)
 
 func reset_priorities():
@@ -54,9 +57,11 @@ func _on_play_button_pressed() -> void:
 	reset_priorities()
 	match is_camera_detached:
 		true:
+			freecam.set_tween_duration(menu_tween_duration)
 			freecam.position = playercam.position
 			freecam.set_priority(1)
 		false:
+			playercam.set_tween_duration(menu_tween_duration)
 			playercam.set_priority(1)
 	is_game_started = true
 

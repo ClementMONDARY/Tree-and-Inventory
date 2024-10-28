@@ -334,7 +334,6 @@ limit_target = NodePath("../../../MapDelimiter")
 
 [node name="MenuCam" parent="game_nodes/CameraManager" index="2" node_paths=PackedStringArray("follow_target")]
 position = Vector2(352, 458.8)
-follow_mode = 1
 follow_target = NodePath("../../player/AnimatedSprite2D")
 limit_left = -128
 limit_top = -128
@@ -370,7 +369,6 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 1
 position = Vector2(352, 458.8)
 zoom = Vector2(1.25, 1.25)
 limit_left = -111
