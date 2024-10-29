@@ -21,7 +21,6 @@ func init_music() -> void:
 	music.play()
 	music_anim.play("fade_out")
 
-
 func _on_exit_button_pressed() -> void:
 	music_anim.get_animation("fade_in").track_set_key_value(0, 0, music.volume_db)
 	music_anim.play("fade_in")

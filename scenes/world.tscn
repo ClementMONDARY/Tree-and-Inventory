@@ -343,9 +343,6 @@ limit_target = NodePath("../../../MapDelimiter")
 [node name="main_menu" parent="game_nodes/CameraManager/MenuCam" index="0"]
 visible = false
 
-[node name="Hover_Buttons" parent="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer" index="5"]
-max_polyphony = 1
-
 [node name="ExitGame" parent="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer" index="6"]
 volume_db = -19.676
 
