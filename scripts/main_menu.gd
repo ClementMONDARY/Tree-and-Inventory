@@ -10,7 +10,7 @@ func _ready():
 func _on_settings_button_pressed():
 	pass # Replace with function body.
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape") && is_game_started:
 		is_game_started = false
 		menu_opened.emit()

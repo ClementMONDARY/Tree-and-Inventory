@@ -156,6 +156,22 @@ z_index = 3
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_6ilnb")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(1, 1)
+emitting = false
+amount = 5
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+lifetime_randomness = 0.8
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(0.886262, 0.886261, 0.886262, 1)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_lf8jw")

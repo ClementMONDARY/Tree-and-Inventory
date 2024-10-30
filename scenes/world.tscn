@@ -342,7 +342,6 @@ zoom = Vector2(1.75, 1.75)
 tween_resource = SubResource("Resource_faypx")
 follow_damping = true
 follow_damping_value = Vector2(0.2, 0.2)
-draw_limits = true
 limit_left = -128
 limit_top = -128
 limit_right = 1216
