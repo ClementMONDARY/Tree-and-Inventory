@@ -398,6 +398,7 @@ process_physics_priority = 300
 script = ExtResource("11_dvbcy")
 
 [node name="MapDelimiter" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(534.25, 327)
 shape = SubResource("RectangleShape2D_w5g7q")
 

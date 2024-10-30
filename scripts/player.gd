@@ -38,9 +38,12 @@ func _physics_process(delta):
 			if !player_is_attacking:
 				play_animation(direction, player_state)
 				move_and_slide()
-	
-	if Input.is_action_just_pressed("escape") && player_can_move:
-		player_can_move = false
+		
+		if Input.is_action_just_pressed("escape"):
+			velocity = Vector2(0, 0)
+			$AnimatedSprite2D.play("idle")
+			player_can_move = false
+		
 
 func emit_footstep(direction: Vector2):
 	var emission_direction = -direction.normalized()

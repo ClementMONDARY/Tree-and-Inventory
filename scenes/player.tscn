@@ -157,7 +157,6 @@ scale = Vector2(0.7, 0.7)
 script = ExtResource("1_6ilnb")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-scale = Vector2(1, 1)
 emitting = false
 amount = 5
 lifetime = 0.5
