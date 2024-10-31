@@ -23,13 +23,14 @@ func _process(delta: float) -> void:
 	update_pointer_icon()
 
 func update_pointer_icon():
-	var screen_size = get_viewport_rect().size * 0.35
+	var screen_size = get_viewport_rect().size / 2
 	var relative_position = to_local(player.global_position)
-	if (abs(relative_position.x) > screen_size.x or abs(relative_position.y) > screen_size.y) && priority == 1:
+	
+	if abs(relative_position.x) > screen_size.x or abs(relative_position.y) > screen_size.y:
 		path_follow.visible = true
 		var angle = global_position.angle_to_point(player.global_position)
-		angle += PI
-		path_follow.progress_ratio = fposmod(angle, TAU) / TAU
-		pointer_icon.rotation = angle - PI / 4
+		var progress_ratio = (angle + PI) / TAU  # Normalise l'angle entre 0 et 1
+		path_follow.progress_ratio = progress_ratio
+		pointer_icon.rotation = angle
 	else:
 		path_follow.visible = false
