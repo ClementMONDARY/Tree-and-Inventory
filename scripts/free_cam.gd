@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 func update_pointer_icon():
 	var screen_size = get_viewport_rect().size / 2.7
 	var relative_position = to_local(player.global_position)
-
+	
 	if abs(relative_position.x) > screen_size.x or abs(relative_position.y) > screen_size.y && priority == 1:
 		path_follow.visible = true
 		var angle = global_position.angle_to_point(player.global_position)

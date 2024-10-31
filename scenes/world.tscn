@@ -329,6 +329,7 @@ position = Vector2(352, 510)
 position = Vector2(437.571, 244.571)
 tween_resource = SubResource("Resource_2oitu")
 draw_limits = false
+limit_target = NodePath("../../../MapDelimiter")
 
 [node name="PlayerCam" parent="game_nodes/CameraManager" index="1" node_paths=PackedStringArray("follow_target")]
 position = Vector2(352, 491.8)

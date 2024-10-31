@@ -16,4 +16,8 @@ func _on_pick_area_body_entered(body):
 	if body.name == "player":
 		print("+1 wood")
 		wood_picked.emit()
-		queue_free()
+		$PickSFX.play()
+		visible = false
+
+func _on_pick_sfx_finished() -> void:
+	queue_free()
