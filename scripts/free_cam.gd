@@ -23,27 +23,13 @@ func _process(delta: float) -> void:
 	update_pointer_icon()
 
 func update_pointer_icon():
-	var screen_size = get_viewport_rect().size / 2  # Demi-tailles de l'écran pour le centrage
+	var screen_size = get_viewport_rect().size * 0.35
 	var relative_position = to_local(player.global_position)
-	
-	if abs(relative_position.x) > screen_size.x or abs(relative_position.y) > screen_size.y:
+	if (abs(relative_position.x) > screen_size.x or abs(relative_position.y) > screen_size.y) && priority == 1:
 		path_follow.visible = true
-		
-		# Calcul de l'angle pour pointer vers le joueur
 		var angle = global_position.angle_to_point(player.global_position)
-		
-		# Conversion de l'angle en position sur les bords du rectangle de l'écran
-		var max_x = screen_size.x * cos(angle)
-		var max_y = screen_size.y * sin(angle)
-		
-		# Ajustement pour que l'icône se place sur les bords de l'écran
-		if abs(max_x) > screen_size.x:
-			max_x = sign(max_x) * screen_size.x
-		if abs(max_y) > screen_size.y:
-			max_y = sign(max_y) * screen_size.y
-		
-		# Positionnement de l'icône en fonction des coordonnées calculées
-		path_follow.offset = Vector2(max_x, max_y).length()
-		pointer_icon.rotation = angle
+		angle += PI
+		path_follow.progress_ratio = fposmod(angle, TAU) / TAU
+		pointer_icon.rotation = angle - PI / 4
 	else:
 		path_follow.visible = false
