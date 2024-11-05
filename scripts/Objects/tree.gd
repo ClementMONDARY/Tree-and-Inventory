@@ -9,11 +9,11 @@ func _ready():
 	spawn_tree()
 
 func _on_chop_area_body_entered(body):
-	if body.name == "player":
+	if body.is_in_group("player"):
 		is_area_entered = true
 
 func _on_chop_area_body_exited(body):
-	if body.name == "player":
+	if body.is_in_group("player"):
 		is_area_entered = false
 
 func _on_player_player_attacking():

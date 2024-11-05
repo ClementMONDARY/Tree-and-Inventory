@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://bgpvsx1kko1ye"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_6ilnb"]
+[ext_resource type="Script" path="res://scripts/Player/player.gd" id="1_6ilnb"]
 [ext_resource type="Texture2D" uid="uid://bi5nsmjdr3elt" path="res://graphics/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_a8de7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbor8"]
@@ -151,7 +151,7 @@ animations = [{
 radius = 18.0
 height = 58.0
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 z_index = 3
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_6ilnb")

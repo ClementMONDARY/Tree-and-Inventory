@@ -1,8 +1,8 @@
 [gd_scene load_steps=25 format=3 uid="uid://if18q1gjqeef"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_xub1n"]
+[ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_xub1n"]
 [ext_resource type="FontFile" uid="uid://c0v7apftvxddm" path="res://graphics/Tiny Swords/UI/Font/dpcomic.ttf" id="2_6uia3"]
-[ext_resource type="Script" path="res://scripts/buttons_v_box_container.gd" id="2_qtlxa"]
+[ext_resource type="Script" path="res://scripts/UI/buttons_v_box_container.gd" id="2_qtlxa"]
 [ext_resource type="Texture2D" uid="uid://dk3xnwcl8eg0h" path="res://graphics/Tiny Swords/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="3_w7ncq"]
 [ext_resource type="Texture2D" uid="uid://bv8070q4jrpcj" path="res://graphics/Tiny Swords/UI/Ribbons/Ribbon_Blue_3Slides.png" id="4_4p7td"]
 [ext_resource type="AudioStream" uid="uid://c768j7r671i87" path="res://audio/UI/Button Hover.wav" id="5_r5wot"]

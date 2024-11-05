@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://b7slmmf6hcf6x"]
 
 [ext_resource type="Texture2D" uid="uid://g6qhpleht7ib" path="res://graphics/Tiny Swords/Resources/Trees/Tree.png" id="1_f8r7q"]
-[ext_resource type="Script" path="res://scripts/tree.gd" id="1_i5mry"]
+[ext_resource type="Script" path="res://scripts/Objects/tree.gd" id="1_i5mry"]
 [ext_resource type="Texture2D" uid="uid://be0vt1bakj3co" path="res://graphics/Tiny Swords/Resources/Trees/New Piskel-1.png.png" id="2_b2hky"]
 [ext_resource type="AudioStream" uid="uid://caddjnds74wcq" path="res://audio/ressources/hit-wood.mp3" id="4_u23jo"]
 

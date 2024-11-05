@@ -28,6 +28,10 @@ mouse_cursor/custom_image="res://graphics/Tiny Swords/UI/Pointers/01.png"
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
+[global_group]
+
+player=""
+
 [input]
 
 up={

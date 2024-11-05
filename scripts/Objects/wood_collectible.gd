@@ -13,7 +13,7 @@ func spawn_log():
 	$pickArea.monitoring = true
 
 func _on_pick_area_body_entered(body):
-	if body.name == "player":
+	if body.is_in_group("player"):
 		print("+1 wood")
 		wood_picked.emit()
 		$PickSFX.play()

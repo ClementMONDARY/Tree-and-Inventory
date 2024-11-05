@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 120
 const SLIDE_FACTOR = 0.75
-const FOOTSTEP_INTERVAL = 0.3
+const FOOTSTEP_INTERVAL = 0.2
 
 var player_state = "idle"
 var player_is_attacking = false
