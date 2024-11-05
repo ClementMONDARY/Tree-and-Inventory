@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cml1bbbkgy4q3"]
+[gd_scene load_steps=16 format=3 uid="uid://cml1bbbkgy4q3"]
 
 [ext_resource type="Script" path="res://scripts/Objects/wood_collectible.gd" id="1_76eot"]
 [ext_resource type="Texture2D" uid="uid://hen4cjovuro7" path="res://graphics/Tiny Swords/Resources/Resources/W_Idle_(NoShadow).png" id="2_vood6"]
 [ext_resource type="Texture2D" uid="uid://dhm652fdcum20" path="res://graphics/Tiny Swords/Resources/Resources/W_Spawn.png" id="3_4b7m2"]
-[ext_resource type="AudioStream" uid="uid://dy5gnpy1473g3" path="res://audio/ressources/Pick item.wav" id="4_i4ydj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5c10w"]
 radius = 17.0569
@@ -99,10 +98,10 @@ _data = {
 "idle": SubResource("Animation_6i4uv")
 }
 
-[node name="wood_collectible" type="StaticBody2D"]
+[node name="wood_collectible" type="StaticBody2D" groups=["item"]]
 script = ExtResource("1_76eot")
 
-[node name="pickArea" type="Area2D" parent="."]
+[node name="pickArea" type="Area2D" parent="." groups=["lootable"]]
 position = Vector2(0, -11.608)
 monitoring = false
 
@@ -121,10 +120,5 @@ libraries = {
 "": SubResource("AnimationLibrary_8pe7t")
 }
 
-[node name="PickSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_i4ydj")
-max_polyphony = 3
-
 [connection signal="body_entered" from="pickArea" to="." method="_on_pick_area_body_entered"]
 [connection signal="body_exited" from="pickArea" to="." method="_on_pick_area_body_exited"]
-[connection signal="finished" from="PickSFX" to="." method="_on_pick_sfx_finished"]

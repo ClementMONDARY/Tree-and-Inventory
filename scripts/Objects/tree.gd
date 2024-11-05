@@ -36,14 +36,14 @@ func drop_wood():
 	var wood_instance = wood.instantiate()
 	wood_instance.global_position = $Marker2D.global_position
 	get_parent().add_child(wood_instance)
-	wood_instance.connect("wood_picked", _on_wood_picked)
+	wood_instance.connect("tree_exited", _on_tree_exited)
 
 func spawn_tree():
 	tree_health = tree_base_health
 	$AnimatedSprite2D.play("idle")
 	$AnimatedSprite2D.frame = randi_range(0, $AnimatedSprite2D.sprite_frames.get_frame_count("idle") - 1)
 
-func _on_wood_picked():
+func _on_tree_exited():
 	print("growth_timer started")
 	$growth_timer.start()
 
