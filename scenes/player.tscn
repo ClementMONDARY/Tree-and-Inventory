@@ -215,7 +215,6 @@ attack_component = NodePath("../AttackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackboxComponent"]
 position = Vector2(35, -12.8571)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mh5s3")
 
 [connection signal="area_entered" from="LootboxComponent" to="LootboxComponent" method="_on_area_entered"]

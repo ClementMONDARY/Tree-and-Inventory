@@ -76,10 +76,10 @@ func play_animation(direction: Vector2, current_player_state: player_state_enum)
 	
 	if direction.x < 0:
 		$AnimatedSprite2D.flip_h = true
-		$AttackboxComponent.scale = Vector2(-1, 1)
+		$AttackboxComponent.scale.x = -1
 	elif direction.x > 0:
 		$AnimatedSprite2D.flip_h = false
-		$AttackboxComponent.scale = Vector2(1, 1)
+		$AttackboxComponent.scale.x = 1
 
 func _on_play_button_pressed() -> void:
 	player_can_move = true

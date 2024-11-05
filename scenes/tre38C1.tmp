@@ -6,8 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://caddjnds74wcq" path="res://audio/ressources/hit-wood.mp3" id="4_u23jo"]
 [ext_resource type="PackedScene" uid="uid://dg16kvckl1o6e" path="res://scenes/Components/health_component.tscn" id="5_n2puf"]
 [ext_resource type="PackedScene" uid="uid://ba3gu32fjmfvl" path="res://scenes/Components/hurtbox_component.tscn" id="6_x5phr"]
-[ext_resource type="Script" path="res://scripts/States/Hurt.gd" id="7_fa743"]
-[ext_resource type="Script" path="res://scripts/States/Idle.gd" id="8_hrva6"]
+[ext_resource type="Script" path="res://scripts/States/StateMachine.gd" id="7_ltx0c"]
+[ext_resource type="Script" path="res://scripts/States/TreeIdle.gd" id="8_hrva6"]
 
 [sub_resource type="Curve" id="Curve_row7o"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.634831, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -60,7 +60,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_33tft")
 }],
 "loop": true,
-"name": &"die",
+"name": &"choped",
 "speed": 5.0
 }, {
 "frames": [{
@@ -80,7 +80,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_h6wjn")
 }],
 "loop": false,
-"name": &"hurt",
+"name": &"hit",
 "speed": 10.0
 }, {
 "frames": [{
@@ -155,7 +155,7 @@ scale_amount_curve = SubResource("Curve_row7o")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_jidfe")
-animation = &"die"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -193,15 +193,13 @@ position = Vector2(1, 3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_m3h0u")
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("7_fa743")
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_ltx0c")
+initial_state = NodePath("TreeIdle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="TreeIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("tree", "tree_health_component")]
 script = ExtResource("8_hrva6")
-
-[node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity", "health_component")]
-script = ExtResource("7_fa743")
-entity = NodePath("../../AnimatedSprite2D")
-health_component = NodePath("../../HealthComponent")
+tree = NodePath("../../AnimatedSprite2D")
+tree_health_component = NodePath("../../HealthComponent")
 
 [connection signal="timeout" from="growth_timer" to="." method="_on_growth_timer_timeout"]
