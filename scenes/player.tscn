@@ -1,9 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://bgpvsx1kko1ye"]
+[gd_scene load_steps=29 format=3 uid="uid://bgpvsx1kko1ye"]
 
 [ext_resource type="Script" path="res://scripts/Player/player.gd" id="1_6ilnb"]
 [ext_resource type="Texture2D" uid="uid://bi5nsmjdr3elt" path="res://graphics/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_a8de7"]
 [ext_resource type="AudioStream" uid="uid://dy5gnpy1473g3" path="res://audio/ressources/Pick item.wav" id="3_ly68w"]
-[ext_resource type="PackedScene" uid="uid://qrktmym13ti0" path="res://scenes/Components/LootboxComponent.tscn" id="4_yb84r"]
+[ext_resource type="PackedScene" uid="uid://qrktmym13ti0" path="res://scenes/Components/lootbox_component.tscn" id="4_yb84r"]
+[ext_resource type="PackedScene" uid="uid://fmrbsuisbbee" path="res://scenes/Components/attackbox_component.tscn" id="5_5xkki"]
+[ext_resource type="PackedScene" uid="uid://bl5jap8w761cd" path="res://scenes/Components/attack_component.tscn" id="5_kcwou"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbor8"]
 atlas = ExtResource("2_a8de7")
@@ -157,10 +159,14 @@ height = 58.0
 radius = 30.0
 height = 77.1428
 
-[node name="player" type="CharacterBody2D" groups=["player"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mh5s3"]
+size = Vector2(70, 31.4286)
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("attack_component") groups=["player"]]
 z_index = 3
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_6ilnb")
+attack_component = NodePath("AttackComponent")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
@@ -180,8 +186,10 @@ color = Color(0.886262, 0.886261, 0.886262, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_lf8jw")
-animation = &"idle"
+animation = &"attacking"
 autoplay = "idle"
+frame = 3
+frame_progress = 0.4695
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -198,4 +206,17 @@ position = Vector2(0, -12.8571)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_al84d")
 
+[node name="AttackComponent" parent="." instance=ExtResource("5_kcwou")]
+
+[node name="AttackboxComponent" parent="." node_paths=PackedStringArray("attack_component") instance=ExtResource("5_5xkki")]
+position = Vector2(0, -2.72478e-06)
+monitoring = false
+attack_component = NodePath("../AttackComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackboxComponent"]
+position = Vector2(35, -12.8571)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_mh5s3")
+
 [connection signal="area_entered" from="LootboxComponent" to="LootboxComponent" method="_on_area_entered"]
+[connection signal="area_entered" from="AttackboxComponent" to="AttackboxComponent" method="_on_area_entered"]

@@ -399,8 +399,6 @@ visible = false
 position = Vector2(534.25, 327)
 shape = SubResource("RectangleShape2D_w5g7q")
 
-[connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree" method="_on_player_player_attacking"]
-[connection signal="player_attacking" from="game_nodes/player" to="game_nodes/tree2" method="_on_player_player_attacking"]
 [connection signal="pressed" from="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer/play_button" to="game_nodes/player" method="_on_play_button_pressed"]
 [connection signal="pressed" from="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]

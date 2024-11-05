@@ -1,11 +1,5 @@
 extends Node
 
-#region Enum
-
-#region Const
-
-#region Variables
-
 var is_game_started = false
 var is_camera_detached = false
 
@@ -17,8 +11,6 @@ var is_camera_detached = false
 @onready var blackscreen_anim: AnimationPlayer = menucam.get_node("AnimationPlayer")
 @onready var menu_tween_duration: float = 2.00
 @onready var freecam_tween_duration: float = 0.5
-
-#region Private Functions
 
 func _ready() -> void:
 	$MenuCam/BlackScreen.visible = true
