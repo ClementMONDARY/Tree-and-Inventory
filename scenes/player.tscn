@@ -190,7 +190,8 @@ shape = SubResource("CapsuleShape2D_1eutv")
 [node name="PickItemSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ly68w")
 
-[node name="LootboxComponent" parent="." instance=ExtResource("4_yb84r")]
+[node name="LootboxComponent" parent="." node_paths=PackedStringArray("loot_sfx") instance=ExtResource("4_yb84r")]
+loot_sfx = NodePath("../PickItemSFX")
 
 [node name="Hitbox" type="CollisionShape2D" parent="LootboxComponent"]
 position = Vector2(0, -12.8571)
