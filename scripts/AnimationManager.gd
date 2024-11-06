@@ -8,14 +8,9 @@ class_name AnimationManager
 func play(animation_name: String) -> void:
 	animation_name.to_lower()
 	
-	if animated_sprite and animated_sprite.sprite_frames.has_animation(animation_name):
-		animated_sprite.play(animation_name)
-	
-	if animation_player and animation_player.has_animation(animation_name):
-		animation_player.play(animation_name)
-	
-	if audio_container and audio_container.audios.has(animation_name):
-		audio_container.audios.get(animation_name).play()
+	play_sprite_animation(animation_name)
+	play_animation(animation_name)
+	play_audio(animation_name)
 
 func play_random_frame(animation_name: String) -> void:
 	animation_name.to_lower()
@@ -23,6 +18,18 @@ func play_random_frame(animation_name: String) -> void:
 	if animated_sprite and animated_sprite.sprite_frames.has_animation(animation_name):
 		animated_sprite.play(animation_name)
 		animated_sprite.frame = randi_range(0, animated_sprite.sprite_frames.get_frame_count(animation_name) - 1)
+
+func play_sprite_animation(animation_name: String) -> void:
+	animation_name.to_lower()
+	
+	if animated_sprite and animated_sprite.sprite_frames.has_animation(animation_name):
+		animated_sprite.play(animation_name)
+
+func play_animation(animation_name: String) -> void:
+	animation_name.to_lower()
+	
+	if animation_player and animation_player.has_animation(animation_name):
+		animation_player.play(animation_name)
 
 func play_audio(audio_name: String) -> void:
 	audio_name.to_lower()
