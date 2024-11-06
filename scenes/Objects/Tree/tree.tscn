@@ -1,13 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7slmmf6hcf6x"]
+[gd_scene load_steps=27 format=3 uid="uid://b7slmmf6hcf6x"]
 
 [ext_resource type="Texture2D" uid="uid://g6qhpleht7ib" path="res://graphics/Tiny Swords/Resources/Trees/Tree.png" id="1_f8r7q"]
-[ext_resource type="Script" path="res://scripts/Objects/tree.gd" id="1_i5mry"]
+[ext_resource type="Script" path="res://scenes/Objects/Tree/Scripts/tree.gd" id="1_i5mry"]
 [ext_resource type="Texture2D" uid="uid://be0vt1bakj3co" path="res://graphics/Tiny Swords/Resources/Trees/New Piskel-1.png.png" id="2_b2hky"]
 [ext_resource type="AudioStream" uid="uid://caddjnds74wcq" path="res://audio/ressources/hit-wood.mp3" id="4_u23jo"]
-[ext_resource type="PackedScene" uid="uid://dg16kvckl1o6e" path="res://scenes/Components/health_component.tscn" id="5_n2puf"]
-[ext_resource type="PackedScene" uid="uid://ba3gu32fjmfvl" path="res://scenes/Components/hurtbox_component.tscn" id="6_x5phr"]
-[ext_resource type="Script" path="res://scripts/States/Hurt.gd" id="7_fa743"]
-[ext_resource type="Script" path="res://scripts/States/Idle.gd" id="8_hrva6"]
+[ext_resource type="PackedScene" uid="uid://dg16kvckl1o6e" path="res://scenes/GlobalComponents/health_component.tscn" id="5_n2puf"]
+[ext_resource type="PackedScene" uid="uid://ba3gu32fjmfvl" path="res://scenes/GlobalComponents/hurtbox_component.tscn" id="6_x5phr"]
+[ext_resource type="Script" path="res://scenes/Objects/Tree/Scripts/States/TreeHurtState.gd" id="7_fa743"]
+[ext_resource type="Script" path="res://scripts/FSM/StateMachine.gd" id="7_i1g88"]
+[ext_resource type="Script" path="res://scenes/Objects/Tree/Scripts/States/TreeIdleState.gd" id="8_hrva6"]
+[ext_resource type="Script" path="res://scenes/Objects/Tree/Scripts/States/TreeDeadState.gd" id="10_jt64t"]
 
 [sub_resource type="Curve" id="Curve_row7o"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.634831, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -106,12 +108,12 @@ radius = 8.0
 height = 24.0
 
 [sub_resource type="Animation" id="Animation_qa84s"]
-resource_name = "hit_effect"
+resource_name = "hurt"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -123,7 +125,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rlakd"]
 _data = {
-"hit_effect": SubResource("Animation_qa84s")
+"hurt": SubResource("Animation_qa84s")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m3h0u"]
@@ -153,6 +155,7 @@ scale_amount_min = 0.7
 scale_amount_curve = SubResource("Curve_row7o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.760203, 3.70607e-06, 4.81307e-07, 1)
 position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_jidfe")
 animation = &"die"
@@ -177,13 +180,13 @@ libraries = {
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="HitSoundEffect" type="AudioStreamPlayer" parent="Audio"]
+[node name="HurtSoundEffect" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("4_u23jo")
-volume_db = -16.865
+volume_db = -11.886
 pitch_scale = 1.59
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_n2puf")]
-health = 3.0
+max_health = 3.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_x5phr")]
 health_component = NodePath("../HealthComponent")
@@ -193,15 +196,29 @@ position = Vector2(1, 3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_m3h0u")
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("7_fa743")
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_i1g88")
+initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="FSM" node_paths=PackedStringArray("entity", "health_component", "hurtbox_component", "hurt_sfx")]
 script = ExtResource("8_hrva6")
+entity = NodePath("../../AnimatedSprite2D")
+health_component = NodePath("../../HealthComponent")
+hurtbox_component = NodePath("../../HurtboxComponent")
+hurt_sfx = NodePath("../../Audio/HurtSoundEffect")
 
-[node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity", "health_component")]
+[node name="Hurt" type="Node" parent="FSM" node_paths=PackedStringArray("entity", "particules_player", "hurt_effect")]
 script = ExtResource("7_fa743")
 entity = NodePath("../../AnimatedSprite2D")
+particules_player = NodePath("../../CPUParticles2D")
+hurt_effect = NodePath("../../AnimationPlayer")
+
+[node name="Dead" type="Node" parent="FSM" node_paths=PackedStringArray("entity", "particules_player", "growth_timer", "wood_marker", "health_component")]
+script = ExtResource("10_jt64t")
+entity = NodePath("../../AnimatedSprite2D")
+particules_player = NodePath("../../CPUParticles2D")
+growth_timer = NodePath("../../growth_timer")
+wood_marker = NodePath("../../Marker2D")
 health_component = NodePath("../../HealthComponent")
 
 [connection signal="timeout" from="growth_timer" to="." method="_on_growth_timer_timeout"]

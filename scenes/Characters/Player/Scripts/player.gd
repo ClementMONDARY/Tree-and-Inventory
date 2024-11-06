@@ -61,7 +61,6 @@ func attack():
 	$AnimatedSprite2D.play("attacking")
 	await get_tree().create_timer(0.3).timeout
 	$AttackboxComponent.monitoring = true
-	print("hit !")
 	await get_tree().create_timer(0.3).timeout
 	$AttackboxComponent.monitoring = false
 	player_is_attacking = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cml1bbbkgy4q3"]
 
-[ext_resource type="Script" path="res://scripts/Objects/wood_collectible.gd" id="1_76eot"]
+[ext_resource type="Script" path="res://scenes/Objects/Wood/Scripts/wood_collectible.gd" id="1_76eot"]
 [ext_resource type="Texture2D" uid="uid://hen4cjovuro7" path="res://graphics/Tiny Swords/Resources/Resources/W_Idle_(NoShadow).png" id="2_vood6"]
 [ext_resource type="Texture2D" uid="uid://dhm652fdcum20" path="res://graphics/Tiny Swords/Resources/Resources/W_Spawn.png" id="3_4b7m2"]
 

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cdjkjv1kf1se2" path="res://graphics/Tiny Swords/Terrain/Bridge/Bridge_All.png" id="3_exjib"]
 [ext_resource type="Texture2D" uid="uid://db3c1p14scgh5" path="res://graphics/Tiny Swords/Terrain/Water/Foam/Foam.png" id="4_6xnyb"]
 [ext_resource type="PackedScene" uid="uid://bgpvsx1kko1ye" path="res://scenes/player.tscn" id="5_t5ooy"]
-[ext_resource type="PackedScene" uid="uid://b7slmmf6hcf6x" path="res://scenes/tree.tscn" id="6_yv3ni"]
+[ext_resource type="PackedScene" uid="uid://b7slmmf6hcf6x" path="res://scenes/Objects/Tree/tree.tscn" id="6_yv3ni"]
 [ext_resource type="AudioStream" uid="uid://b1tgwl3qbuld8" path="res://audio/terrain/Wild Life In The Forest Sounds.mp3" id="7_w4dmv"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_06hye"]
 [ext_resource type="AudioStream" uid="uid://cmn6c1d1mar3f" path="res://audio/music/Ambient Video Game Music D&D – Forests 2 - Track 1 Preview.mp3" id="9_t0o8r"]

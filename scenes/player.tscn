@@ -1,11 +1,11 @@
 [gd_scene load_steps=29 format=3 uid="uid://bgpvsx1kko1ye"]
 
-[ext_resource type="Script" path="res://scripts/Player/player.gd" id="1_6ilnb"]
+[ext_resource type="Script" path="res://scenes/Characters/Player/Scripts/player.gd" id="1_6ilnb"]
 [ext_resource type="Texture2D" uid="uid://bi5nsmjdr3elt" path="res://graphics/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_a8de7"]
 [ext_resource type="AudioStream" uid="uid://dy5gnpy1473g3" path="res://audio/ressources/Pick item.wav" id="3_ly68w"]
-[ext_resource type="PackedScene" uid="uid://qrktmym13ti0" path="res://scenes/Components/lootbox_component.tscn" id="4_yb84r"]
-[ext_resource type="PackedScene" uid="uid://fmrbsuisbbee" path="res://scenes/Components/attackbox_component.tscn" id="5_5xkki"]
-[ext_resource type="PackedScene" uid="uid://bl5jap8w761cd" path="res://scenes/Components/attack_component.tscn" id="5_kcwou"]
+[ext_resource type="PackedScene" uid="uid://qrktmym13ti0" path="res://scenes/GlobalComponents/lootbox_component.tscn" id="4_yb84r"]
+[ext_resource type="PackedScene" uid="uid://fmrbsuisbbee" path="res://scenes/GlobalComponents/attackbox_component.tscn" id="5_5xkki"]
+[ext_resource type="PackedScene" uid="uid://bl5jap8w761cd" path="res://scenes/GlobalComponents/attack_component.tscn" id="5_kcwou"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbor8"]
 atlas = ExtResource("2_a8de7")
