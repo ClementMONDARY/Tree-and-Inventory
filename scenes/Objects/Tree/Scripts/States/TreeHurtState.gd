@@ -1,25 +1,19 @@
 extends State
 class_name TreeHurt
 
-@export var entity: AnimatedSprite2D
+@export var animation_manager: AnimationManager
 @export var particules_player: CPUParticles2D
-@export var hurt_effect: AnimationPlayer
 
 func _ready() -> void:
-	if !entity or !particules_player or !hurt_effect:
+	if !animation_manager or !particules_player:
 		printerr("TreeIdle: Missing required components.")
 		return
 	
-	if !entity.sprite_frames.get_animation_names().has("hurt") and !hurt_effect.get_animation("hurt"):
-		printerr("The AnimatedSprite " + entity.name + " do not contains the \"hurt\" animation.")
-		return
-		
-	entity.animation_finished.connect(hurt_animation_finished)
+	animation_manager.animated_sprite.animation_finished.connect(_on_animation_finished)
 
 func Enter() -> void:
-	entity.play("hurt")
-	hurt_effect.play("hurt")
+	animation_manager.play("hurt")
 	particules_player.emitting = true
 
-func hurt_animation_finished() -> void:
+func _on_animation_finished() -> void:
 	Transitioned.emit(self, "Idle")

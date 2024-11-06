@@ -35,7 +35,7 @@ func change_state(source_state: State, new_state_name: String) -> void:
 	if current_state:
 		current_state.Exit()
 	
-	print("Entered new state " + new_state_name)
+	print("Entered new state: " + new_state_name)
 	new_state.Enter()
 	
 	current_state = new_state
