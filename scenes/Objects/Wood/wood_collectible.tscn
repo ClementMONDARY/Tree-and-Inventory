@@ -126,15 +126,15 @@ script = ExtResource("4_lfiso")
 animated_sprite = NodePath("../AnimatedSprite2D")
 animation_player = NodePath("../logAnimation")
 
-[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_0q4t0")
 initial_state = NodePath("Spawn")
 
-[node name="Spawn" type="Node" parent="FSM" node_paths=PackedStringArray("animation_manager")]
+[node name="Spawn" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animation_manager")]
 script = ExtResource("5_ki2jc")
 animation_manager = NodePath("../../AnimationManager")
 
-[node name="Idle" type="Node" parent="FSM" node_paths=PackedStringArray("animation_manager", "pickbox")]
+[node name="Idle" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animation_manager", "pickbox")]
 script = ExtResource("6_dpwo3")
 animation_manager = NodePath("../../AnimationManager")
 pickbox = NodePath("../../PickboxComponent")

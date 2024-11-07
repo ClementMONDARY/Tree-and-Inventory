@@ -13,10 +13,6 @@ var footstep_timer := 0.0
 
 @onready var footstep_particles = $CPUParticles2D
 
-@export_group("Player Stats")
-@export var health_component: HealthComponent
-@export var attack_component: AttackComponent
-
 func _physics_process(delta):
 	if player_can_move:
 		var direction = Input.get_vector("left", "right", "up", "down")

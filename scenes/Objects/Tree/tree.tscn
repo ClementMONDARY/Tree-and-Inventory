@@ -223,27 +223,27 @@ animated_sprite = NodePath("../TreeAnimatedSprite2D")
 animation_player = NodePath("../TreeAnimationPlayer")
 audio_container = NodePath("../AudioContainer")
 
-[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_i1g88")
 initial_state = NodePath("Spawn")
 
-[node name="Spawn" type="Node" parent="FSM" node_paths=PackedStringArray("health", "animation_manager")]
+[node name="Spawn" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("health", "animation_manager")]
 script = ExtResource("9_cjhqu")
 health = NodePath("../../HealthComponent")
 animation_manager = NodePath("../../AnimationManager")
 
-[node name="Idle" type="Node" parent="FSM" node_paths=PackedStringArray("animation_manager", "health_component", "hurtbox_component")]
+[node name="Idle" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animation_manager", "health_component", "hurtbox_component")]
 script = ExtResource("8_hrva6")
 animation_manager = NodePath("../../AnimationManager")
 health_component = NodePath("../../HealthComponent")
 hurtbox_component = NodePath("../../HurtboxComponent")
 
-[node name="Hurt" type="Node" parent="FSM" node_paths=PackedStringArray("animation_manager", "particules_player")]
+[node name="Hurt" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animation_manager", "particules_player")]
 script = ExtResource("7_fa743")
 animation_manager = NodePath("../../AnimationManager")
 particules_player = NodePath("../../LeafCPUParticles2D")
 
-[node name="Dead" type="Node" parent="FSM" node_paths=PackedStringArray("animation_manager", "particules_player", "growth_timer", "wood_marker")]
+[node name="Dead" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animation_manager", "particules_player", "growth_timer", "wood_marker")]
 script = ExtResource("10_jt64t")
 animation_manager = NodePath("../../AnimationManager")
 particules_player = NodePath("../../LeafCPUParticles2D")
