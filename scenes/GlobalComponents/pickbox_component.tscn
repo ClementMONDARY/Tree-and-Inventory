@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtk4o77kslt2m"]
+
+[ext_resource type="Script" path="res://scripts/Components/pickbox_component.gd" id="1_lyj04"]
+
+[node name="PickboxComponent" type="Area2D" groups=["lootable"]]
+position = Vector2(0, -11.608)
+monitoring = false
+script = ExtResource("1_lyj04")

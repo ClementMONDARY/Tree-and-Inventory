@@ -5,7 +5,6 @@ class_name TreeDie
 @export var particules_player: CPUParticles2D
 @export var growth_timer: Timer
 @export var wood_marker: Marker2D
-@export var health_component: HealthComponent
 var wood = preload("res://scenes/Objects/Wood/wood_collectible.tscn")
 
 func _ready() -> void:
@@ -32,5 +31,4 @@ func _on_tree_exited() -> void:
 	growth_timer.start()
 
 func _on_growth_timer_timeout() -> void:
-	health_component.set_max_health()
-	Transitioned.emit(self, "Idle")
+	Transitioned.emit(self, "Spawn")

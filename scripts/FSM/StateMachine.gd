@@ -14,6 +14,7 @@ func _ready() -> void:
 	
 	if initial_state:
 		initial_state.Enter()
+		print("Initial State: " + initial_state.name)
 		current_state = initial_state
 
 func _process(delta: float) -> void:
