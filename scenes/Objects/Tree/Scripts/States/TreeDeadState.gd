@@ -21,6 +21,9 @@ func _deferred_enter() -> void:
 	animation_manager.play("die")
 	particules_player.emitting = true
 	
+	#set random wood position aroud tree
+	wood_marker.get_parent().rotation = randf_range(-PI, PI)
+	
 	var wood_instance = wood.instantiate()
 	wood_instance.global_position = wood_marker.global_position
 	get_tree().current_scene.add_child(wood_instance)

@@ -5,5 +5,4 @@ class_name WoodIdle
 @export var pickbox: PickboxComponent
 
 func Enter() -> void:
-	pickbox.monitoring = true
 	animation_manager.play("idle")

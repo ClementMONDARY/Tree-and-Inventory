@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Components/pickbox_component.gd" id="1_lyj04"]
 
-[node name="PickboxComponent" type="Area2D" groups=["lootable"]]
+[node name="PickboxComponent" type="Area2D"]
 position = Vector2(0, -11.608)
 monitoring = false
 script = ExtResource("1_lyj04")

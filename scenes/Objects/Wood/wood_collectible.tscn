@@ -102,7 +102,7 @@ _data = {
 "idle": SubResource("Animation_6i4uv")
 }
 
-[node name="wood_collectible" type="StaticBody2D" groups=["item"]]
+[node name="wood_collectible" type="StaticBody2D" groups=["lootable"]]
 
 [node name="PickboxComponent" parent="." instance=ExtResource("2_a4fcj")]
 
@@ -114,7 +114,7 @@ shape = SubResource("CircleShape2D_thx0y")
 z_index = 3
 position = Vector2(0, -24.392)
 sprite_frames = SubResource("SpriteFrames_tas35")
-animation = &"spawn"
+animation = &"idle"
 
 [node name="logAnimation" type="AnimationPlayer" parent="."]
 libraries = {
