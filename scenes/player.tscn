@@ -186,10 +186,8 @@ color = Color(0.886262, 0.886261, 0.886262, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_lf8jw")
-animation = &"attacking"
+animation = &"idle"
 autoplay = "idle"
-frame = 3
-frame_progress = 0.4695
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 rotation = 1.5708

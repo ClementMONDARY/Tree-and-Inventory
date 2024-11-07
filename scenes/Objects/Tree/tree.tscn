@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b7slmmf6hcf6x"]
+[gd_scene load_steps=30 format=3 uid="uid://b7slmmf6hcf6x"]
 
 [ext_resource type="Texture2D" uid="uid://g6qhpleht7ib" path="res://graphics/Tiny Swords/Resources/Trees/Tree.png" id="1_f8r7q"]
 [ext_resource type="Texture2D" uid="uid://be0vt1bakj3co" path="res://graphics/Tiny Swords/Resources/Trees/New Piskel-1.png.png" id="2_b2hky"]
@@ -125,8 +125,25 @@ tracks/0/keys = {
 "values": [Color(0.760203, 3.70607e-06, 4.81307e-07, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_t0lxp"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TreeAnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rlakd"]
 _data = {
+"RESET": SubResource("Animation_t0lxp"),
 "hurt": SubResource("Animation_qa84s")
 }
 
@@ -166,13 +183,6 @@ position = Vector2(1, 3)
 
 [node name="Marker2D" type="Marker2D" parent="MarkerPivotCenter"]
 position = Vector2(0, -40)
-
-[node name="Panel" type="Panel" parent="MarkerPivotCenter/Marker2D"]
-offset_left = -4.0
-offset_top = -3.0
-offset_right = 36.0
-offset_bottom = 37.0
-scale = Vector2(0.215851, 0.194525)
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(1, 3)
