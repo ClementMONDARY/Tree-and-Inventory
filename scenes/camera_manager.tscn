@@ -1,20 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://bm1pooh1mf2q8"]
+[gd_scene load_steps=15 format=3 uid="uid://bm1pooh1mf2q8"]
 
 [ext_resource type="Script" path="res://scripts/UI/camera_manager.gd" id="1_gq21l"]
 [ext_resource type="Script" path="res://scripts/free_cam.gd" id="2_iy0f3"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_kyqb7"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_7brpx"]
-[ext_resource type="Texture2D" uid="uid://cbjyl76ux4xwd" path="res://graphics/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue_icon.png" id="3_ya7u8"]
 [ext_resource type="PackedScene" uid="uid://if18q1gjqeef" path="res://scenes/main_menu.tscn" id="4_7j733"]
-[ext_resource type="Texture2D" uid="uid://y5w88kihmp3p" path="res://graphics/Tiny Swords/UI/Pointers/07.png" id="4_fnf8s"]
 [ext_resource type="AudioStream" uid="uid://dg1nkhuqe0y8o" path="res://audio/UI/Camera Zoom In.wav" id="5_whf46"]
 [ext_resource type="AudioStream" uid="uid://bjqrnuosvq1of" path="res://audio/UI/Camera Zoom Out.wav" id="6_byu4h"]
-
-[sub_resource type="Curve2D" id="Curve2D_i2npi"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -335, 0, 0, 0, 0, 0, -335, -160, 0, 0, 0, 0, 335, -160, 0, 0, 0, 0, 335, 160, 0, 0, 0, 0, -335, 160, 0, 0, 0, 0, -335, 0)
-}
-point_count = 6
 
 [sub_resource type="Resource" id="Resource_ska45"]
 script = ExtResource("3_7brpx")
@@ -93,26 +85,6 @@ script = ExtResource("2_iy0f3")
 zoom = Vector2(1.5, 1.5)
 tween_on_load = false
 draw_limits = true
-
-[node name="Path2D" type="Path2D" parent="FreeCam"]
-position = Vector2(2, 0)
-curve = SubResource("Curve2D_i2npi")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="FreeCam/Path2D"]
-z_index = 10
-position = Vector2(-335, 0)
-scale = Vector2(0.937476, 0.993025)
-rotates = false
-
-[node name="PlayerDirectionIndicator" type="Sprite2D" parent="FreeCam/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_ya7u8")
-
-[node name="Pointer" type="Sprite2D" parent="FreeCam/Path2D/PathFollow2D"]
-rotation = -0.785398
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("4_fnf8s")
-offset = Vector2(-30.1887, -30.7093)
 
 [node name="PlayerCam" type="Node2D" parent="."]
 script = ExtResource("2_kyqb7")
