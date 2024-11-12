@@ -401,8 +401,6 @@ shape = SubResource("RectangleShape2D_w5g7q")
 
 [connection signal="pressed" from="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer/play_button" to="game_nodes/player" method="_on_play_button_pressed"]
-[connection signal="pressed" from="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer/play_button" to="game_nodes/player/FiniteStateMachine/MenuOpened" method="_on_play_button_pressed"]
-[connection signal="pressed" from="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer/play_button" to="game_nodes/player/FiniteStateMachine/Idle" method="_on_play_button_pressed"]
 [connection signal="pressed" from="game_nodes/CameraManager/MenuCam/main_menu/Buttons_VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
 
 [editable path="game_nodes/player"]
