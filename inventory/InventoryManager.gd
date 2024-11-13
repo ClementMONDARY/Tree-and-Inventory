@@ -14,7 +14,7 @@ func _ready():
 	inventory.resize(INVENTORY_ROWS * INVENTORY_COLS)
 
 func add_item(item: Item) -> bool:
-    # Essayer d'abord la hotbar
+	# Essayer d'abord la hotbar
 	var slot = find_empty_slot_hotbar()
 	if slot != -1:
 		hotbar[slot] = item
@@ -27,7 +27,7 @@ func add_item(item: Item) -> bool:
 		inventory[slot] = item
 		inventory_updated.emit()
 		return true
-    
+	
 	return false
 
 func find_empty_slot_hotbar() -> int:
