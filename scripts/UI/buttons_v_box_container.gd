@@ -8,7 +8,7 @@ func _ready() -> void:
 	is_game_exited = false
 	menu_anim = $AnimationPlayer
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		open_menu()
 

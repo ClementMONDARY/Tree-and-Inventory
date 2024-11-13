@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bgpvsx1kko1ye"]
+[gd_scene load_steps=29 format=3 uid="uid://bgpvsx1kko1ye"]
 
 [ext_resource type="Script" path="res://scenes/Characters/Player/Scripts/player.gd" id="1_6ilnb"]
 [ext_resource type="Texture2D" uid="uid://bi5nsmjdr3elt" path="res://graphics/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_a8de7"]
@@ -6,13 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://qrktmym13ti0" path="res://scenes/GlobalComponents/lootbox_component.tscn" id="4_yb84r"]
 [ext_resource type="PackedScene" uid="uid://fmrbsuisbbee" path="res://scenes/GlobalComponents/attackbox_component.tscn" id="5_5xkki"]
 [ext_resource type="PackedScene" uid="uid://bl5jap8w761cd" path="res://scenes/GlobalComponents/attack_component.tscn" id="5_kcwou"]
-[ext_resource type="Script" path="res://scripts/AudioContainer.gd" id="6_oac0n"]
-[ext_resource type="Script" path="res://scripts/AnimationManager.gd" id="8_lp3d7"]
-[ext_resource type="Script" path="res://scripts/FSM/StateMachine.gd" id="9_aghjy"]
-[ext_resource type="Script" path="res://scenes/Characters/Player/Scripts/States/PlayerIdle.gd" id="10_1m3dc"]
-[ext_resource type="Script" path="res://scenes/Characters/Player/Scripts/States/MenuOpened.gd" id="10_wdyjx"]
-[ext_resource type="Script" path="res://scenes/Characters/Player/Scripts/States/PlayerMove.gd" id="11_qv24e"]
-[ext_resource type="Script" path="res://scenes/Characters/Player/Scripts/States/PlayerAttack.gd" id="12_u71n3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbor8"]
 atlas = ExtResource("2_a8de7")
@@ -199,8 +192,11 @@ autoplay = "idle"
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1eutv")
 
+[node name="Pick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ly68w")
+
 [node name="LootboxComponent" parent="." node_paths=PackedStringArray("loot_sfx") instance=ExtResource("4_yb84r")]
-loot_sfx = NodePath("../AudioContainer/Pick")
+loot_sfx = NodePath("../Pick")
 
 [node name="Hitbox" type="CollisionShape2D" parent="LootboxComponent"]
 position = Vector2(0, -12.8571)
@@ -217,33 +213,6 @@ attack_component = NodePath("../AttackComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackboxComponent"]
 position = Vector2(35, -12.8571)
 shape = SubResource("RectangleShape2D_mh5s3")
-
-[node name="AudioContainer" type="Node" parent="."]
-script = ExtResource("6_oac0n")
-
-[node name="Pick" type="AudioStreamPlayer2D" parent="AudioContainer"]
-scale = Vector2(0.7, 0.7)
-stream = ExtResource("3_ly68w")
-
-[node name="AnimationManager" type="Node" parent="."]
-script = ExtResource("8_lp3d7")
-
-[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("9_aghjy")
-initial_state = NodePath("Idle")
-
-[node name="MenuOpened" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("10_wdyjx")
-
-[node name="Idle" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animation_manager")]
-script = ExtResource("10_1m3dc")
-animation_manager = NodePath("../../AnimationManager")
-
-[node name="Move" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("11_qv24e")
-
-[node name="Attack" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("12_u71n3")
 
 [connection signal="area_entered" from="LootboxComponent" to="LootboxComponent" method="_on_area_entered"]
 [connection signal="area_entered" from="AttackboxComponent" to="AttackboxComponent" method="_on_area_entered"]
