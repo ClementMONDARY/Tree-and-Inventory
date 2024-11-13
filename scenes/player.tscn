@@ -1,5 +1,4 @@
 [gd_scene load_steps=29 format=3 uid="uid://bgpvsx1kko1ye"]
-[gd_scene load_steps=29 format=3 uid="uid://bgpvsx1kko1ye"]
 
 [ext_resource type="Script" path="res://scenes/Characters/Player/Scripts/player.gd" id="1_6ilnb"]
 [ext_resource type="Texture2D" uid="uid://bi5nsmjdr3elt" path="res://graphics/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_a8de7"]
