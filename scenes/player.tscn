@@ -193,7 +193,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1eutv")
 
 [node name="Pick" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(1, 1)
 stream = ExtResource("3_ly68w")
 
 [node name="LootboxComponent" parent="." node_paths=PackedStringArray("loot_sfx") instance=ExtResource("4_yb84r")]
