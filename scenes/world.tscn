@@ -332,6 +332,7 @@ draw_limits = false
 limit_target = NodePath("../../../MapDelimiter")
 
 [node name="PlayerCam" parent="game_nodes/CameraManager" index="1" node_paths=PackedStringArray("follow_target")]
+top_level = true
 position = Vector2(352, 491.8)
 follow_mode = 1
 follow_target = NodePath("../../player/AnimatedSprite2D")
